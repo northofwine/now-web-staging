@@ -29,20 +29,23 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3'
+          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+          cache-version: 0
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Import Contentful data
-        run: CONTENTFUL_SPACE_ID="${ENV_CONTENTFUL_SPACE_ID}" CONTENTFUL_ACCESS_TOKEN="${ENV_CONTENTFUL_ACCESS_TOKEN}" CONTENTFUL_ENVIRONMENT="${ENV_CONTENTFUL_ENVIRONMENT}" jekyll contentful
+        run: CONTENTFUL_SPACE_ID="${ENV_CONTENTFUL_SPACE_ID}" CONTENTFUL_ACCESS_TOKEN="${ENV_CONTENTFUL_ACCESS_TOKEN}" CONTENTFUL_ENVIRONMENT="${ENV_CONTENTFUL_ENVIRONMENT}" bundle exec jekyll contentful
         env:
           JEKYLL_ENV: production
           ENV_CONTENTFUL_SPACE_ID: ${{ secrets.ENV_CONTENTFUL_SPACE_ID }}
           ENV_CONTENTFUL_ACCESS_TOKEN: ${{ secrets.ENV_CONTENTFUL_ACCESS_TOKEN }}
           ENV_CONTENTFUL_ENVIRONMENT: ${{ secrets.ENV_CONTENTFUL_ENVIRONMENT }}
       - name: Build with Jekyll
-        uses: actions/jekyll-build-pages@v1
-        with:
-          source: ./
-          destination: ./_site
+        run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
 
