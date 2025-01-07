@@ -19,3 +19,6 @@ Gemfile.lock
 
 # Ignore development files
 *_development*
+
+# Ignore imported data from Contentful
+_data/
