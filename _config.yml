@@ -8,3 +8,10 @@ contentful:
         space: ENV_CONTENTFUL_SPACE_ID
         access_token: ENV_CONTENTFUL_ACCESS_TOKEN
         environment: ENV_CONTENTFUL_ENVIRONMENT
+
+page_gen-dirs: false
+page_gen:
+- data: contentful.spaces.northofwine.product
+  template: default
+  dir: utvalg
+  name: product_short_name
