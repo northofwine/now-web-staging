@@ -12,6 +12,6 @@ contentful:
 page_gen-dirs: false
 page_gen:
 - data: contentful.spaces.northofwine.product
-  template: default
+  template: details
   dir: utvalg
   name: product_short_name
