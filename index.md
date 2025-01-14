@@ -1,8 +1,7 @@
 ---
 layout: default
-title: "Happy Jekylling!"
+title: "Hjem"
 ---
 
-## You're ready to go!
-
-Start developing your Jekyll website.
+# North of Wine
+Vinimport i Trøndelag
