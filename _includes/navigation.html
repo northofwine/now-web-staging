@@ -1,6 +1,6 @@
 <nav>
     <ul>
-        {% for item in site.data.sitemap %}
+        {% for item in site.data.navigation %}
         <li>
             <a class="{% if item.url == page.url %}selected{% endif %}" href="{{ item.url }}">{{ item.title }}</a>
         </li>
