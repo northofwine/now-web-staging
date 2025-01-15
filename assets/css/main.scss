@@ -51,3 +51,23 @@ p{
 a{
     margin: sizes.$padding-small;
 }
+
+.button{
+    margin: 0;
+    padding: sizes.$padding-small;
+    display: inline-block;
+    background-color: colors.$background-inverted;
+
+    color: colors.$text-inverted;
+    text-decoration: none;
+
+    &.selected{
+        background-color: colors.$background-default;
+        color: colors.$text-default;
+    }
+
+    &:hover{
+        background-color: colors.$background-inverted-hover;
+        color: colors.$text-inverted;
+    }
+}
