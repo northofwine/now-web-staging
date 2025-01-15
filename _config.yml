@@ -2,6 +2,18 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 baseurl: "" # the subpath of your site, e.g. /blog
 title: "" # the name of your site, e.g. ACME Corp.
 
+organization:
+  name: "North of Wine AS"
+  id: "NO 927 128 047 MVA"
+  adress:
+    street: "Fosenkaia 7"
+    zip: "7010"
+    city: "Trondheim"
+  email:
+    default: "post@northofwine.no"
+    order: "ordre@northofwine.no"
+    invoice: "faktura@northofwine.no"
+
 contentful:
   spaces:
     - northofwine:
