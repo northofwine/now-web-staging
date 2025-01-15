@@ -44,6 +44,16 @@ h1, h2, h3, h4, h5, h6{
     margin: sizes.$padding-small;
 }
 
+h2{
+    font-size: 20px;
+    line-height: 24px;
+}
+
+h3{
+    font-size: 16px;
+    line-height: 24px;
+}
+
 p{
     margin: sizes.$padding-small;
 }
@@ -77,16 +87,21 @@ dl{
 }
 
 article{
-    padding: sizes.$padding-small;
+    padding: 0 sizes.$padding-small sizes.$padding-small;
 
     a{
+        margin: 0;
         text-decoration: none;
     }
 }
 
 article section{
-    overflow: hidden;
-    margin: sizes.$padding-tiny 0;
+    margin: 0;
+    padding: sizes.$padding-small;
     background-color: colors.$background-default;
     color: colors.$text-default;
+
+    &:nth-child(even){
+        margin: sizes.$padding-tiny 0;
+    }
 }

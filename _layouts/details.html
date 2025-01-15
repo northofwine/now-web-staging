@@ -12,9 +12,9 @@
         <article>
             <section>
                 <img src="{{ page.image.url }}?w=100">
-                <p>{{ page.product_type_name }}</p>
-                <h2>{{ page.product_short_name }}</h2>
+                <h3>{{ page.product_type_name }}</h3>
                 <p>{{ page.country }} | {{ page.region }}</p>
+                <h2>{{ page.product_short_name }}</h2>
                 <p>{{ page.volume | times: 1.0 | divided_by: 100 }} l | {{ page.packaging_material }} med {{ page.cork_type | downcase }}</p>
 
                 {% assign price_split = page.sales_price | split: "." %}
