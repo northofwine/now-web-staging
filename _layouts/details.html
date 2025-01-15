@@ -36,19 +36,30 @@
                 </dl>
             </section>
             <section>
-                <dl>
-                    <dt>Fylde</dt>
-                    <dd>{{ page.fullness }}</dd>
-                    <dt>Friskhet</dt>
-                    <dd>{{ page.freshness }}</dd>
-                    {% if page.product_type_name == 'Rødvin' %}
-                    <dt>Garvestoffer</dt>
-                    <dd>{{ page.tannins }}</dd>
-                    {% else %} <!-- white, rose, and sparkling -->
-                    <dt>Sødme</dt>
-                    <dd>{{ page.sweetness }}</dd>
-                    {% endif %}
-                </dl>
+                <table>
+                    <thead>
+                        <tr>
+                            <td>Fylde</td>
+                            <td>Friskhet</td>
+                            {% if page.product_type_name == 'Rødvin' %}
+                            <td>Garvestoffer</td>
+                            {% else %} <!-- white, rose, and sparkling -->
+                            <td>Sødme</td>
+                            {% endif %}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ page.fullness }}</td>
+                            <td>{{ page.freshness }}</td>
+                            {% if page.product_type_name == 'Rødvin' %}
+                            <td>{{ page.tannins }}</td>
+                            {% else %} <!-- white, rose, and sparkling -->
+                            <td>{{ page.sweetness }}</td>
+                            {% endif %}
+                        </tr>
+                    </thead>
+                </table>
                 <dl>
                     <dt>Passer til</dt>
                     <dd>{{ page.recommended_food | join: ', ' | capitalize }}</dd>

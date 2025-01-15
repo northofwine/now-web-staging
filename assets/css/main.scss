@@ -66,6 +66,40 @@ dl{
     margin: sizes.$padding-small;
 }
 
+dt{
+    margin: 0 0 sizes.$padding-tiny 0;
+    padding: 0;
+    font-size: 12px;
+    line-height: 16px;
+}
+
+dd{
+    margin: 0 0 sizes.$padding-medium 0;
+    padding: 0;
+}
+
+table{
+    margin: sizes.$padding-small;
+    margin-bottom: sizes.$padding-medium;
+    display: block;
+    position: relative;
+
+    thead{
+        font-size: 12px;
+        line-height: 16px;
+    }
+
+    tbody{
+        font-size: 26px;
+        line-height: 32px;
+    }
+
+    td{
+        padding: 0;
+        width: calc(100% / 3);
+    }
+}
+
 .button{
     margin: 0;
     padding: sizes.$padding-small;
