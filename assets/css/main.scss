@@ -21,7 +21,17 @@ body {
 }
 
 header{
-    padding: sizes.$padding-small;
+    padding: 0;
+    display: flex;
+    background: colors.$background-default;
+    color: colors.$text-default;
+
+    svg{
+    }
+
+    a, h1{
+        margin: 0;
+    }
 }
 
 nav{
@@ -42,6 +52,11 @@ footer{
 
 h1, h2, h3, h4, h5, h6{
     margin: sizes.$padding-small;
+}
+
+h1{
+    font-size: 20px;
+    line-height: 24px;
 }
 
 h2{
@@ -98,6 +113,10 @@ table{
         padding: 0;
         width: calc(100% / 3);
     }
+}
+
+img.splash{
+    width: 100%;
 }
 
 .button{
