@@ -2,3 +2,28 @@ $padding-large: 48px;
 $padding-medium: 24px;
 $padding-small: 12px;
 $padding-tiny: 4px;
+
+$spacing-tiny: 4px;
+$spacing-small: 12px;
+$spacing-medium: 24px;
+$spacing-large: 48px;
+
+$spacing-tiny-dynamic-s: 4px;
+$spacing-tiny-dynamic-m: 8px;
+$spacing-tiny-dynamic-l: 12px;
+
+$spacing-small-dynamic-s: 12px;
+$spacing-small-dynamic-m: 16px;
+$spacing-small-dynamic-l: 24px;
+
+$spacing-medium-dynamic-s: 24px;
+$spacing-medium-dynamic-m: 32px;
+$spacing-medium-dynamic-l: 48px;
+
+$spacing-large-dynamic-s: 48px;
+$spacing-large-dynamic-m: 72px;
+$spacing-large-dynamic-l: 96px;
+
+$breakpoint-s: 0;
+$breakpoint-m: 640px;
+$breakpoint-l: 1200px;

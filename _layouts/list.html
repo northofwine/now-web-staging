@@ -4,11 +4,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta charset="utf-8">
         <title>{{ page.title }} - {{ site.title }}</title>
-        <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}">
+        <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+        <script src="{{ '/assets/javascript/main.js' | relative_url }}"></script> 
     </head>
     <body>
         {% include header.html %}
-        {% include navigation.html %}
         {% assign sorted = site.data.contentful.spaces.northofwine.product | sort_natural: 'product_short_name' %}
         {% for product in sorted %}
         <article>

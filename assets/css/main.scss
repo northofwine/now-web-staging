@@ -1,46 +1,72 @@
 ---
 ---
-$bodyFont: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-
 @use "sizes";
 @use "colors";
 
 html{
     background: colors.$background-default;
     color: colors.$text-default;
-    padding: sizes.$padding-medium;
+
+    font-size: 16px;
+    line-height: 24px;
+
+    padding: sizes.$spacing-medium-dynamic-s;
+
+    @media (min-width: sizes.$breakpoint-m){
+        padding: sizes.$spacing-medium-dynamic-m;
+    }
+
+    @media (min-width: sizes.$breakpoint-l){
+        padding: sizes.$spacing-medium-dynamic-l;
+    }
 }
 
 body {
     margin: 0;
     padding: 0;
-    background: colors.$background-inverted;
-    
-    color: colors.$text-inverted;
-    font-family: $bodyFont;
+    position: relative;
 }
+
+// Header and footer
 
 header{
     padding: 0;
     display: flex;
-    background: colors.$background-default;
-    color: colors.$text-default;
+    flex-direction: column;
+    position: sticky;
+    top: sizes.$spacing-medium-dynamic-s;
+    background: colors.$background-inverted;
+    color: colors.$text-inverted;
 
-    svg{
+    img.splash{
+        margin-left: auto;
+        max-width: 240px;
     }
 
-    a, h1{
-        margin: 0;
+    nav{
+        padding: sizes.$spacing-medium;
+
+        a{
+            color: colors.$text-inverted;
+        }
     }
-}
+    
+    &:not(.minimized){
+        #open{display: none;}
+    }
 
-nav{
-    padding: sizes.$padding-small;
+    &.minimized{
+        nav, #close{display: none;}
+    }
 
-    ul{
-        margin: 0;
-        padding: 0;
-        list-style: none;
+    top: sizes.$spacing-medium-dynamic-s;
+    
+    @media (min-width: sizes.$breakpoint-m){
+        top: sizes.$spacing-medium-dynamic-m;
+    }
+
+    @media (min-width: sizes.$breakpoint-l){
+        top: sizes.$spacing-medium-dynamic-l;
     }
 }
 
@@ -49,6 +75,26 @@ footer{
     color: colors.$text-default;
     padding: sizes.$padding-small;
 }
+
+nav{
+    margin: 0;
+    padding: 0;
+}
+
+// Lists
+
+ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    &.horizontal{
+        display: flex;
+        flex-direction: row;
+    }
+}
+
+// Text elements
 
 h1, h2, h3, h4, h5, h6{
     margin: sizes.$padding-small;
@@ -70,15 +116,47 @@ h3{
 }
 
 p{
-    margin: sizes.$padding-small;
+    margin: 0;
 }
+
+// Links and buttons
 
 a{
-    margin: sizes.$padding-small;
+    margin: 0;
+    color: colors.$text-default;
+    text-decoration: underline;
+
+    &:hover{
+        color: colors.$text-default;
+        text-decoration: none;
+    }
+
+    img{
+        display: block;
+    }
 }
 
+a.nav{
+    padding: sizes.$spacing-small 0;
+    display: inline-block;
+    text-decoration: none;
+
+    &:hover{
+        color: colors.$text-inverted;
+        text-decoration: underline;
+    }
+}
+
+a.padded{
+    padding: sizes.$spacing-medium;
+    display: inline-block;
+    text-decoration: none;
+}
+
+// Utility
+
 dl{
-    margin: sizes.$padding-small;
+    margin: 0;
 }
 
 dt{
