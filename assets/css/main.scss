@@ -368,6 +368,23 @@ hr{
     border-top: 1px solid colors.$border;
 }
 
+.hider{
+    background: colors.$background-default;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: sizes.$spacing-medium-dynamic-s;
+
+    @media (min-width: sizes.$breakpoint-m){
+        height: sizes.$spacing-medium-dynamic-m;
+    }
+
+    @media (min-width: sizes.$breakpoint-l){
+        height: sizes.$spacing-medium-dynamic-l;
+    }
+}
+
 img.splash{
     margin-left: auto;
     width: sizes.$image-splash-s;
