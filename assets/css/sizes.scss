@@ -24,6 +24,14 @@ $spacing-large-dynamic-s: 48px;
 $spacing-large-dynamic-m: 72px;
 $spacing-large-dynamic-l: 96px;
 
+// IMAGES
+
+$image-splash-s: 240px;
+$image-splash-m: 360px;
+$image-splash-l: 480px;
+
+// TYPOGRAPHY
+
 $fontsize-huge-s: 40px;
 $fontsize-huge-m: 60px;
 $fontsize-huge-l: 80px;
@@ -37,6 +45,8 @@ $lineheight-small: 16px;
 
 $fontsize-regular: 16px;
 $lineheight-regular: 24px;
+
+// RESPONSIVITY
 
 $breakpoint-s: 0;
 $breakpoint-m: 640px;
