@@ -26,6 +26,10 @@ $spacing-large-dynamic-l: 96px;
 
 // IMAGES
 
+$image-card-s: 72px;
+$image-card-m: 84px;
+$image-card-l: 96px;
+
 $image-splash-s: 240px;
 $image-splash-m: 360px;
 $image-splash-l: 480px;
@@ -40,6 +44,24 @@ $lineheight-huge-s: 48px;
 $lineheight-huge-m: 72px;
 $lineheight-huge-l: 96px;
 
+$fontsize-large-t: 16px;
+$fontsize-large-s: 22px;
+$fontsize-large-m: 32px;
+$fontsize-large-l: 42px;
+
+$lineheight-large-t: 20px;
+$lineheight-large-s: 24px;
+$lineheight-large-m: 36px;
+$lineheight-large-l: 48px;
+
+$fontsize-medium-s: 20px;
+$fontsize-medium-m: 28px;
+$fontsize-medium-l: 36px;
+
+$lineheight-medium-s: 24px;
+$lineheight-medium-m: 36px;
+$lineheight-medium-l: 48px;
+
 $fontsize-small: 12px;
 $lineheight-small: 16px;
 
@@ -48,6 +70,8 @@ $lineheight-regular: 24px;
 
 // RESPONSIVITY
 
-$breakpoint-s: 0;
+$breakpoint-t: 360px;
 $breakpoint-m: 640px;
 $breakpoint-l: 1200px;
+
+$sidebar-width: 320px;

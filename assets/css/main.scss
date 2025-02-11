@@ -30,7 +30,7 @@ body {
     padding: 0;
     position: relative;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
 
     gap: sizes.$spacing-medium-dynamic-s;
 
@@ -40,6 +40,11 @@ body {
 
     @media (min-width: sizes.$breakpoint-l){
         gap: sizes.$spacing-medium-dynamic-l;
+    }
+
+    @media (min-width: 960px){
+        flex-direction: row;
+        flex-wrap: wrap;
     }
 }
 
@@ -114,7 +119,7 @@ footer{
 // Sections
 
 section.sidebar{
-    max-width: 320px;
+    max-width: sizes.$sidebar-width;
 }
 
 // Lists
@@ -135,6 +140,23 @@ ul{
     }
 }
 
+ul.content{
+    display: flex;
+    flex-direction: column;
+    flex-basis: calc(100% - sizes.$sidebar-width - sizes.$spacing-medium-dynamic-s);
+    gap: sizes.$spacing-medium-dynamic-s;
+    max-width: 100%;
+
+    @media (min-width: sizes.$breakpoint-m){
+        gap: sizes.$spacing-medium-dynamic-m;
+        flex-basis: calc(100% - sizes.$sidebar-width - sizes.$spacing-medium-dynamic-m);
+    }
+
+    @media (min-width: sizes.$breakpoint-l){
+        gap: sizes.$spacing-medium-dynamic-l;flex-basis: calc(100% - sizes.$sidebar-width - sizes.$spacing-medium-dynamic-l);
+    }
+}
+
 // Text elements
 
 h1, h2, h3, h4, h5, h6{
@@ -144,6 +166,7 @@ h1, h2, h3, h4, h5, h6{
 h1{
     font-size: sizes.$fontsize-huge-s;
     line-height: sizes.$lineheight-huge-s;
+    font-weight: 700;
 
     @media (min-width: sizes.$breakpoint-m){
         font-size: sizes.$fontsize-huge-m;
@@ -157,8 +180,19 @@ h1{
 }
 
 h2{
-    font-size: 20px;
-    line-height: 24px;
+    font-size: sizes.$fontsize-large-s;
+    line-height: sizes.$lineheight-large-s;
+    font-weight: 700;
+
+    @media (min-width: sizes.$breakpoint-m){
+        font-size: sizes.$fontsize-large-m;
+        line-height: sizes.$lineheight-large-m;
+    }
+
+    @media (min-width: sizes.$breakpoint-l){
+        font-size: sizes.$fontsize-large-l;
+        line-height: sizes.$lineheight-large-l;
+    }
 }
 
 h3{
@@ -168,6 +202,21 @@ h3{
 
 p{
     margin: 0;
+}
+
+p.price{
+    font-size: sizes.$fontsize-medium-s;
+    line-height: sizes.$lineheight-medium-s;
+
+    @media (min-width: sizes.$breakpoint-m){
+        font-size: sizes.$fontsize-medium-m;
+        line-height: sizes.$lineheight-medium-m;
+    }
+
+    @media (min-width: sizes.$breakpoint-l){
+        font-size: sizes.$fontsize-medium-l;
+        line-height: sizes.$lineheight-medium-l;
+    }
 }
 
 // Links and buttons
@@ -206,6 +255,39 @@ a.padded{
     padding: sizes.$spacing-medium;
     display: inline-block;
     text-decoration: none;
+}
+
+a.card{
+    display: flex;
+    flex-direction: row;
+    gap: sizes.$spacing-medium;
+    border: solid 1px colors.$border;
+    text-decoration: none;
+
+    .content{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        gap: sizes.$spacing-small;
+    }
+
+    h2{
+        flex-grow: 1;
+    }
+
+    padding: sizes.$spacing-medium-dynamic-s;
+
+    @media (max-width: sizes.$breakpoint-t){
+        flex-direction: column;
+    }
+
+    @media (min-width: sizes.$breakpoint-m){
+        padding: sizes.$spacing-medium-dynamic-m;
+    }
+
+    @media (min-width: sizes.$breakpoint-l){
+        padding: sizes.$spacing-medium-dynamic-l;
+    }
 }
 
 // Utility
@@ -251,5 +333,18 @@ img.splash{
     @media (min-width: sizes.$breakpoint-l){
         margin-top: - sizes.$spacing-large-dynamic-l;
         width: sizes.$image-splash-l;
+    }
+}
+
+img.card{
+    width: sizes.$image-card-s;
+    height: 100%;
+
+    @media (min-width: sizes.$breakpoint-m){
+        width: sizes.$image-card-m;
+    }
+
+    @media (min-width: sizes.$breakpoint-l){
+        width: sizes.$image-card-l;
     }
 }
