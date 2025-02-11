@@ -29,12 +29,25 @@ body {
     margin: 0;
     padding: 0;
     position: relative;
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: sizes.$spacing-medium-dynamic-s;
+
+    @media (min-width: sizes.$breakpoint-m){
+        gap: sizes.$spacing-medium-dynamic-m;
+    }
+
+    @media (min-width: sizes.$breakpoint-l){
+        gap: sizes.$spacing-medium-dynamic-l;
+    }
 }
 
 // Header and footer
 
 header{
     padding: 0;
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
     position: sticky;
@@ -75,17 +88,41 @@ header{
 }
 
 footer{
-    background: colors.$background-default;
-    color: colors.$text-default;
-    padding: sizes.$padding-small;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: sizes.$spacing-medium-dynamic-s;
+
+    @media (min-width: sizes.$breakpoint-m){
+        gap: sizes.$spacing-medium-dynamic-m;
+    }
+
+    @media (min-width: sizes.$breakpoint-l){
+        gap: sizes.$spacing-medium-dynamic-l;
+    }
+
+    ul{
+        gap: sizes.$spacing-medium;
+    }
+    
+    dl{
+        flex-grow: 1;
+        text-align: right;
+    }
 }
+
+// Sections
+
+section.sidebar{
+    max-width: 320px;
+}
+
+// Lists
 
 nav{
     margin: 0;
     padding: 0;
 }
-
-// Lists
 
 ul{
     margin: 0;
@@ -101,12 +138,22 @@ ul{
 // Text elements
 
 h1, h2, h3, h4, h5, h6{
-    margin: sizes.$padding-small;
+    margin: 0;
 }
 
 h1{
-    font-size: 20px;
-    line-height: 24px;
+    font-size: sizes.$fontsize-huge-s;
+    line-height: sizes.$lineheight-huge-s;
+
+    @media (min-width: sizes.$breakpoint-m){
+        font-size: sizes.$fontsize-huge-m;
+        line-height: sizes.$lineheight-huge-m;
+    }
+
+    @media (min-width: sizes.$breakpoint-l){
+        font-size: sizes.$fontsize-huge-l;
+        line-height: sizes.$lineheight-huge-l;
+    }
 }
 
 h2{
@@ -143,7 +190,7 @@ a{
 a.nav{
     padding: sizes.$spacing-small 0;
     display: inline-block;
-    
+
     font-family: "DM Mono", serif;
     font-weight: 400;
     font-style: normal;
@@ -168,79 +215,27 @@ dl{
 }
 
 dt{
-    margin: 0 0 sizes.$padding-tiny 0;
+    margin: 0 0 sizes.$spacing-tiny 0;
     padding: 0;
-    font-size: 12px;
-    line-height: 16px;
+
+    font-family: "DM Mono", serif;
+    font-weight: 500;
+    font-style: normal;
+    text-decoration: none;
+    font-size: sizes.$fontsize-small;
+    line-height: sizes.$lineheight-small;
 }
 
 dd{
-    margin: 0 0 sizes.$padding-medium 0;
+    margin: 0 0 sizes.$spacing-tiny 0;
     padding: 0;
+    font-weight: 300;
 }
 
-table{
-    margin: sizes.$padding-small;
-    margin-bottom: sizes.$padding-medium;
-    display: block;
-    position: relative;
-
-    thead{
-        font-size: 12px;
-        line-height: 16px;
-    }
-
-    tbody{
-        font-size: 26px;
-        line-height: 32px;
-    }
-
-    td{
-        padding: 0;
-        width: calc(100% / 3);
-    }
-}
-
-img.splash{
-    width: 100%;
-}
-
-.button{
+hr{
+    flex-grow: 1;
+    flex-basis: 100%;
     margin: 0;
-    padding: sizes.$padding-small;
-    display: inline-block;
-    background-color: colors.$background-inverted;
-
-    color: colors.$text-inverted;
-    text-decoration: none;
-
-    &.selected{
-        background-color: colors.$background-default;
-        color: colors.$text-default;
-    }
-
-    &:hover{
-        background-color: colors.$background-inverted-hover;
-        color: colors.$text-inverted;
-    }
-}
-
-article{
-    padding: 0 sizes.$padding-small sizes.$padding-small;
-
-    a{
-        margin: 0;
-        text-decoration: none;
-    }
-}
-
-article section{
-    margin: 0;
-    padding: sizes.$padding-small;
-    background-color: colors.$background-default;
-    color: colors.$text-default;
-
-    &:nth-child(even){
-        margin: sizes.$padding-tiny 0;
-    }
+    border: none;
+    border-top: 1px solid colors.$border;
 }
