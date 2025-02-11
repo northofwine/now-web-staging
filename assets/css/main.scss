@@ -7,6 +7,10 @@ html{
     background: colors.$background-default;
     color: colors.$text-default;
 
+    font-family: "DM Sans", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
     font-size: 16px;
     line-height: 24px;
 
@@ -139,6 +143,10 @@ a{
 a.nav{
     padding: sizes.$spacing-small 0;
     display: inline-block;
+    
+    font-family: "DM Mono", serif;
+    font-weight: 400;
+    font-style: normal;
     text-decoration: none;
 
     &:hover{
