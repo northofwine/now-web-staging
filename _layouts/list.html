@@ -22,17 +22,15 @@
                 <a class="card" href="/utvalg/{{ product.product_short_name | slugify: 'latin' }}">
                     <img class="card" src="{{ product.image.url }}?w=100">
                     <div class="content">
-                        <h3>{{ product.product_type_name }}</h3>
-                        <p>{{ product.country }} | {{ product.region }}</p>
+                        <div class="meta">
+                            <p class="small">{{ product.product_type_name }}</p>
+                            <p class="small">{{ product.country }} | {{ product.region }}</p>
+                        </div>
                         <h2>{{ product.product_short_name }}</h2>
                         {% assign price_split = product.sales_price | split: "." %}
                         {% assign integral = price_split[0] %}
                         {% assign fractional = price_split[1] | append: "00" | truncate: 2, "" %}
-                        <p class="price">{{ integral }},{{ fractional }} kr
-                        {% if product.product_id %}
-                            | Vinmonopolet
-                        {% endif %}
-                        </p>
+                        <p>{{ integral }},{{ fractional }} kr</p>
                     </div>
                 </a>
             </li>

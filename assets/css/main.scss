@@ -11,8 +11,8 @@ html{
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    font-size: 16px;
-    line-height: 24px;
+    font-size: sizes.$fontsize-regular-s;
+    line-height: sizes.$lineheight-regular-s;
 
     padding: sizes.$spacing-medium-dynamic-s;
 
@@ -196,27 +196,56 @@ h2{
 }
 
 h3{
-    font-size: 16px;
-    line-height: 24px;
+    font-size: sizes.$fontsize-small-s;
+    line-height: sizes.$lineheight-small-s;
+    font-weight: 700;
+
+    @media (min-width: sizes.$breakpoint-m){
+        font-size: sizes.$fontsize-small-m;
+        line-height: sizes.$lineheight-small-m;
+    }
+
+    @media (min-width: sizes.$breakpoint-l){
+        font-size: sizes.$fontsize-small-l;
+        line-height: sizes.$lineheight-small-l;
+    }
 }
 
 p{
     margin: 0;
-}
-
-p.price{
-    font-size: sizes.$fontsize-medium-s;
-    line-height: sizes.$lineheight-medium-s;
+    font-size: sizes.$fontsize-regular-s;
+    line-height: sizes.$lineheight-regular-s;
 
     @media (min-width: sizes.$breakpoint-m){
-        font-size: sizes.$fontsize-medium-m;
-        line-height: sizes.$lineheight-medium-m;
+        font-size: sizes.$fontsize-regular-m;
+        line-height: sizes.$lineheight-regular-m;
     }
 
     @media (min-width: sizes.$breakpoint-l){
-        font-size: sizes.$fontsize-medium-l;
-        line-height: sizes.$lineheight-medium-l;
+        font-size: sizes.$fontsize-regular-l;
+        line-height: sizes.$lineheight-regular-l;
     }
+}
+
+p.small{
+    font-size: sizes.$fontsize-small-s;
+    line-height: sizes.$lineheight-small-s;
+
+    @media (min-width: sizes.$breakpoint-m){
+        font-size: sizes.$fontsize-small-m;
+        line-height: sizes.$lineheight-small-m;
+    }
+
+    @media (min-width: sizes.$breakpoint-l){
+        font-size: sizes.$fontsize-small-l;
+        line-height: sizes.$lineheight-small-l;
+    }
+}
+
+p.mono{
+    font-family: "DM Mono", serif;
+    font-style: normal;
+    text-decoration: none;
 }
 
 // Links and buttons
@@ -268,11 +297,26 @@ a.card{
         display: flex;
         flex-wrap: wrap;
         flex-direction: column;
+        width: 100%;
         gap: sizes.$spacing-small;
+    }
+
+    .meta{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: sizes.$spacing-small;
+
+        p{
+            font-family: "DM Mono", serif;
+            font-style: normal;
+            text-decoration: none;
+        }
     }
 
     h2{
         flex-grow: 1;
+        align-content: flex-end;
     }
 
     padding: sizes.$spacing-medium-dynamic-s;
@@ -304,8 +348,8 @@ dt{
     font-weight: 500;
     font-style: normal;
     text-decoration: none;
-    font-size: sizes.$fontsize-small;
-    line-height: sizes.$lineheight-small;
+    font-size: sizes.$fontsize-small-s;
+    line-height: sizes.$lineheight-small-s;
 }
 
 dd{
