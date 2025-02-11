@@ -60,19 +60,6 @@ header{
         position: static;
     }
 
-    img.splash{
-        margin-left: auto;
-        width: sizes.$image-splash-s;
-
-        @media (min-width: sizes.$breakpoint-m){
-            width: sizes.$image-splash-m;
-        }
-    
-        @media (min-width: sizes.$breakpoint-l){
-            width: sizes.$image-splash-l;
-        }
-    }
-
     nav{
         padding: sizes.$spacing-medium;
 
@@ -251,4 +238,18 @@ hr{
     margin: 0;
     border: none;
     border-top: 1px solid colors.$border;
+}
+
+img.splash{
+    margin-left: auto;
+    width: sizes.$image-splash-s;
+
+    @media (min-width: sizes.$breakpoint-m){
+        width: sizes.$image-splash-m;
+    }
+
+    @media (min-width: sizes.$breakpoint-l){
+        margin-top: - sizes.$spacing-large-dynamic-l;
+        width: sizes.$image-splash-l;
+    }
 }
