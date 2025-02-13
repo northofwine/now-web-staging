@@ -122,10 +122,10 @@ footer{
 // Sections
 
 section.sidebar{
-    position: relative;
+    display: flex;
+    min-width: 240px;
 
     &.horizontal{
-        display: flex;
         flex-direction: row-reverse;
         justify-content: space-between;
         align-items: flex-start;
@@ -201,11 +201,23 @@ ul{
 }
 
 ul.list{
+    // display: flex;
+    // flex-direction: column;
+    // flex-basis: 50%;
+    // flex-grow: 1;
+    // max-width: 100%;
+
     display: flex;
     flex-direction: column;
-    flex-basis: 50%;
-    flex-grow: 1;
-    max-width: 100%;
+    gap: sizes.$spacing-medium-dynamic-s;
+
+    @media (min-width: sizes.$breakpoint-m){
+        gap: sizes.$spacing-medium-dynamic-m;
+    }
+
+    @media (min-width: sizes.$breakpoint-l){
+        gap: sizes.$spacing-medium-dynamic-l;
+    }
 }
 
 // Text elements
