@@ -4,32 +4,39 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta charset="utf-8">
         <title>{{ page.title }} - {{ site.title }}</title>
-        <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}">
+        <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+        <script src="{{ '/assets/javascript/main.js' | relative_url }}"></script> 
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
     </head>
     <body>
+        <div class="hider"></div>
         {% include header.html %}
-        {% include navigation.html %}
+        <section class="sidebar">
+            {{ content }}
+        </section>
+        <ul class="content">
         {% assign sorted = site.data.contentful.spaces.northofwine.product | sort_natural: 'product_short_name' %}
         {% for product in sorted %}
-        <article>
-            <a href="/utvalg/{{ product.product_short_name | slugify: 'latin' }}">
-                <section>
-                    <img src="{{ product.image.url }}?w=100">
-                    <h3>{{ product.product_type_name }}</h3>
-                    <p>{{ product.country }} | {{ product.region }}</p>
-                    <h2>{{ product.product_short_name }}</h2>
-                    {% assign price_split = product.sales_price | split: "." %}
-                    {% assign integral = price_split[0] %}
-                    {% assign fractional = price_split[1] | append: "00" | truncate: 2, "" %}
-                    <p>{{ integral }},{{ fractional }} kr
-                    {% if product.product_id %}
-                        | Vinmonopolet
-                    {% endif %}
-                    </p>
-                </section>
-            </a>
-        </article>
+            <li>
+                <a class="card" href="/utvalg/{{ product.product_short_name | slugify: 'latin' }}">
+                    <img class="card" src="{{ product.image.url }}?w=100">
+                    <div class="content">
+                        <div class="meta">
+                            <p class="small">{{ product.product_type_name }}</p>
+                            <p class="small">{{ product.country }} | {{ product.region }}</p>
+                        </div>
+                        <h2>{{ product.product_short_name }}</h2>
+                        {% assign price_split = product.sales_price | split: "." %}
+                        {% assign integral = price_split[0] %}
+                        {% assign fractional = price_split[1] | append: "00" | truncate: 2, "" %}
+                        <p>{{ integral }},{{ fractional }} kr</p>
+                    </div>
+                </a>
+            </li>
         {% endfor %}
+        </ul>
         {% include footer.html %}
     </body>
 </html>

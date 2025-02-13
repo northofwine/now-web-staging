@@ -2,3 +2,80 @@ $padding-large: 48px;
 $padding-medium: 24px;
 $padding-small: 12px;
 $padding-tiny: 4px;
+
+$spacing-tiny: 4px;
+$spacing-small: 12px;
+$spacing-medium: 24px;
+$spacing-large: 48px;
+
+$spacing-tiny-dynamic-s: 4px;
+$spacing-tiny-dynamic-m: 8px;
+$spacing-tiny-dynamic-l: 12px;
+
+$spacing-small-dynamic-s: 12px;
+$spacing-small-dynamic-m: 16px;
+$spacing-small-dynamic-l: 24px;
+
+$spacing-medium-dynamic-s: 24px;
+$spacing-medium-dynamic-m: 32px;
+$spacing-medium-dynamic-l: 48px;
+
+$spacing-large-dynamic-s: 48px;
+$spacing-large-dynamic-m: 72px;
+$spacing-large-dynamic-l: 96px;
+
+// IMAGES
+
+$image-card-s: 72px;
+$image-card-m: 84px;
+$image-card-l: 96px;
+
+$image-splash-s: 240px;
+$image-splash-m: 360px;
+$image-splash-l: 480px;
+
+// TYPOGRAPHY
+
+$fontsize-huge-s: 40px;
+$fontsize-huge-m: 60px;
+$fontsize-huge-l: 80px;
+
+$lineheight-huge-s: 48px;
+$lineheight-huge-m: 72px;
+$lineheight-huge-l: 96px;
+
+$fontsize-large-t: 16px;
+$fontsize-large-s: 22px;
+$fontsize-large-m: 32px;
+$fontsize-large-l: 42px;
+
+$lineheight-large-t: 20px;
+$lineheight-large-s: 24px;
+$lineheight-large-m: 36px;
+$lineheight-large-l: 48px;
+
+$fontsize-regular-s: 16px;
+$fontsize-regular-m: 20px;
+$fontsize-regular-l: 24px;
+
+$lineheight-regular-s: 24px;
+$lineheight-regular-m: 28px;
+$lineheight-regular-l: 32px;
+
+$fontsize-small-s: 12px;
+$fontsize-small-m: 16px;
+$fontsize-small-l: 20px;
+$lineheight-small-s: 16px;
+$lineheight-small-m: 20px;
+$lineheight-small-l: 24px;
+
+$fontsize-regular: 16px;
+$lineheight-regular: 24px;
+
+// RESPONSIVITY
+
+$breakpoint-t: 360px;
+$breakpoint-m: 640px;
+$breakpoint-l: 1200px;
+
+$sidebar-width: 320px;

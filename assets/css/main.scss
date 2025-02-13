@@ -1,160 +1,413 @@
 ---
 ---
-$bodyFont: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-
 @use "sizes";
 @use "colors";
 
 html{
     background: colors.$background-default;
     color: colors.$text-default;
-    padding: sizes.$padding-medium;
+
+    font-family: "DM Sans", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: sizes.$fontsize-regular-s;
+    line-height: sizes.$lineheight-regular-s;
+
+    padding: sizes.$spacing-medium-dynamic-s;
+
+    @media (min-width: sizes.$breakpoint-m){
+        padding: sizes.$spacing-medium-dynamic-m;
+    }
+
+    @media (min-width: sizes.$breakpoint-l){
+        padding: sizes.$spacing-medium-dynamic-l;
+    }
 }
 
 body {
     margin: 0;
     padding: 0;
-    background: colors.$background-inverted;
-    
-    color: colors.$text-inverted;
-    font-family: $bodyFont;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    gap: sizes.$spacing-medium-dynamic-s;
+
+    @media (min-width: sizes.$breakpoint-m){
+        gap: sizes.$spacing-medium-dynamic-m;
+    }
+
+    @media (min-width: sizes.$breakpoint-l){
+        gap: sizes.$spacing-medium-dynamic-l;
+    }
+
+    @media (min-width: 960px){
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
 }
+
+// Header and footer
 
 header{
     padding: 0;
+    flex-grow: 1;
+    flex-basis: 100%;
     display: flex;
-    background: colors.$background-default;
-    color: colors.$text-default;
+    flex-direction: column;
+    position: sticky;
+    top: sizes.$spacing-medium-dynamic-s;
+    background: colors.$background-inverted;
+    color: colors.$text-inverted;
 
-    svg{
+    &.splash{
+        position: static;
     }
 
-    a, h1{
-        margin: 0;
+    nav{
+        padding: sizes.$spacing-medium;
+
+        a{
+            color: colors.$text-inverted;
+        }
     }
-}
+    
+    &:not(.minimized){
+        #open{display: none;}
+    }
 
-nav{
-    padding: sizes.$padding-small;
+    &.minimized{
+        nav, #close{display: none;}
+    }
 
-    ul{
-        margin: 0;
-        padding: 0;
-        list-style: none;
+    top: sizes.$spacing-medium-dynamic-s;
+    
+    @media (min-width: sizes.$breakpoint-m){
+        top: sizes.$spacing-medium-dynamic-m;
+    }
+
+    @media (min-width: sizes.$breakpoint-l){
+        top: sizes.$spacing-medium-dynamic-l;
     }
 }
 
 footer{
-    background: colors.$background-default;
-    color: colors.$text-default;
-    padding: sizes.$padding-small;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: sizes.$spacing-medium-dynamic-s;
+
+    @media (min-width: sizes.$breakpoint-m){
+        gap: sizes.$spacing-medium-dynamic-m;
+    }
+
+    @media (min-width: sizes.$breakpoint-l){
+        gap: sizes.$spacing-medium-dynamic-l;
+    }
+
+    ul{
+        gap: sizes.$spacing-medium;
+    }
+    
+    dl{
+        flex-grow: 1;
+        text-align: right;
+    }
 }
 
+// Sections
+
+section.sidebar{
+    max-width: sizes.$sidebar-width;
+}
+
+// Lists
+
+nav{
+    margin: 0;
+    padding: 0;
+}
+
+ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    &.horizontal{
+        display: flex;
+        flex-direction: row;
+    }
+}
+
+ul.content{
+    display: flex;
+    flex-direction: column;
+    flex-basis: calc(100% - sizes.$sidebar-width - sizes.$spacing-medium-dynamic-s);
+    gap: sizes.$spacing-medium-dynamic-s;
+    max-width: 100%;
+
+    @media (min-width: sizes.$breakpoint-m){
+        gap: sizes.$spacing-medium-dynamic-m;
+        flex-basis: calc(100% - sizes.$sidebar-width - sizes.$spacing-medium-dynamic-m);
+    }
+
+    @media (min-width: sizes.$breakpoint-l){
+        gap: sizes.$spacing-medium-dynamic-l;flex-basis: calc(100% - sizes.$sidebar-width - sizes.$spacing-medium-dynamic-l);
+    }
+}
+
+// Text elements
+
 h1, h2, h3, h4, h5, h6{
-    margin: sizes.$padding-small;
+    margin: 0;
 }
 
 h1{
-    font-size: 20px;
-    line-height: 24px;
+    font-size: sizes.$fontsize-huge-s;
+    line-height: sizes.$lineheight-huge-s;
+    font-weight: 700;
+
+    @media (min-width: sizes.$breakpoint-m){
+        font-size: sizes.$fontsize-huge-m;
+        line-height: sizes.$lineheight-huge-m;
+    }
+
+    @media (min-width: sizes.$breakpoint-l){
+        font-size: sizes.$fontsize-huge-l;
+        line-height: sizes.$lineheight-huge-l;
+    }
 }
 
 h2{
-    font-size: 20px;
-    line-height: 24px;
+    font-size: sizes.$fontsize-large-s;
+    line-height: sizes.$lineheight-large-s;
+    font-weight: 700;
+
+    @media (min-width: sizes.$breakpoint-m){
+        font-size: sizes.$fontsize-large-m;
+        line-height: sizes.$lineheight-large-m;
+    }
+
+    @media (min-width: sizes.$breakpoint-l){
+        font-size: sizes.$fontsize-large-l;
+        line-height: sizes.$lineheight-large-l;
+    }
 }
 
 h3{
-    font-size: 16px;
-    line-height: 24px;
+    font-size: sizes.$fontsize-small-s;
+    line-height: sizes.$lineheight-small-s;
+    font-weight: 700;
+
+    @media (min-width: sizes.$breakpoint-m){
+        font-size: sizes.$fontsize-small-m;
+        line-height: sizes.$lineheight-small-m;
+    }
+
+    @media (min-width: sizes.$breakpoint-l){
+        font-size: sizes.$fontsize-small-l;
+        line-height: sizes.$lineheight-small-l;
+    }
 }
 
 p{
-    margin: sizes.$padding-small;
+    margin: 0;
+    font-size: sizes.$fontsize-regular-s;
+    line-height: sizes.$lineheight-regular-s;
+
+    @media (min-width: sizes.$breakpoint-m){
+        font-size: sizes.$fontsize-regular-m;
+        line-height: sizes.$lineheight-regular-m;
+    }
+
+    @media (min-width: sizes.$breakpoint-l){
+        font-size: sizes.$fontsize-regular-l;
+        line-height: sizes.$lineheight-regular-l;
+    }
 }
+
+p.small{
+    font-size: sizes.$fontsize-small-s;
+    line-height: sizes.$lineheight-small-s;
+
+    @media (min-width: sizes.$breakpoint-m){
+        font-size: sizes.$fontsize-small-m;
+        line-height: sizes.$lineheight-small-m;
+    }
+
+    @media (min-width: sizes.$breakpoint-l){
+        font-size: sizes.$fontsize-small-l;
+        line-height: sizes.$lineheight-small-l;
+    }
+}
+
+p.mono{
+    font-family: "DM Mono", serif;
+    font-style: normal;
+    text-decoration: none;
+}
+
+// Links and buttons
 
 a{
-    margin: sizes.$padding-small;
+    margin: 0;
+    color: colors.$text-default;
+    text-decoration: underline;
+
+    &:hover{
+        color: colors.$text-default;
+        text-decoration: none;
+    }
+
+    img{
+        display: block;
+    }
 }
 
+a.nav{
+    padding: sizes.$spacing-small 0;
+    display: inline-block;
+
+    font-family: "DM Mono", serif;
+    font-weight: 400;
+    font-style: normal;
+    text-decoration: none;
+
+    &:hover{
+        color: colors.$text-inverted;
+        text-decoration: underline;
+    }
+}
+
+a.padded{
+    padding: sizes.$spacing-medium;
+    display: inline-block;
+    text-decoration: none;
+}
+
+a.card{
+    display: flex;
+    flex-direction: row;
+    border: solid 1px colors.$border;
+    text-decoration: none;
+
+    .content{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        width: 100%;
+        gap: sizes.$spacing-small;
+    }
+
+    .meta{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: sizes.$spacing-small;
+
+        p{
+            font-family: "DM Mono", serif;
+            font-style: normal;
+            text-decoration: none;
+        }
+    }
+
+    h2{
+        flex-grow: 1;
+        align-content: flex-end;
+    }
+
+    padding: sizes.$spacing-medium-dynamic-s;
+    gap: sizes.$spacing-medium-dynamic-s;
+
+    @media (max-width: sizes.$breakpoint-t){
+        flex-direction: column;
+    }
+
+    @media (min-width: sizes.$breakpoint-m){
+        padding: sizes.$spacing-medium-dynamic-m;
+        gap: sizes.$spacing-medium-dynamic-m;
+    }
+
+    @media (min-width: sizes.$breakpoint-l){
+        padding: sizes.$spacing-medium-dynamic-l;
+        gap: sizes.$spacing-medium-dynamic-l;
+    }
+}
+
+// Utility
+
 dl{
-    margin: sizes.$padding-small;
+    margin: 0;
 }
 
 dt{
-    margin: 0 0 sizes.$padding-tiny 0;
+    margin: 0 0 sizes.$spacing-tiny 0;
     padding: 0;
-    font-size: 12px;
-    line-height: 16px;
+
+    font-family: "DM Mono", serif;
+    font-weight: 500;
+    font-style: normal;
+    text-decoration: none;
+    font-size: sizes.$fontsize-small-s;
+    line-height: sizes.$lineheight-small-s;
 }
 
 dd{
-    margin: 0 0 sizes.$padding-medium 0;
+    margin: 0 0 sizes.$spacing-tiny 0;
     padding: 0;
+    font-weight: 300;
 }
 
-table{
-    margin: sizes.$padding-small;
-    margin-bottom: sizes.$padding-medium;
-    display: block;
-    position: relative;
+hr{
+    flex-grow: 1;
+    flex-basis: 100%;
+    margin: 0;
+    border: none;
+    border-top: 1px solid colors.$border;
+}
 
-    thead{
-        font-size: 12px;
-        line-height: 16px;
+.hider{
+    background: colors.$background-default;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: sizes.$spacing-medium-dynamic-s;
+
+    @media (min-width: sizes.$breakpoint-m){
+        height: sizes.$spacing-medium-dynamic-m;
     }
 
-    tbody{
-        font-size: 26px;
-        line-height: 32px;
-    }
-
-    td{
-        padding: 0;
-        width: calc(100% / 3);
+    @media (min-width: sizes.$breakpoint-l){
+        height: sizes.$spacing-medium-dynamic-l;
     }
 }
 
 img.splash{
-    width: 100%;
-}
+    margin-left: auto;
+    width: sizes.$image-splash-s;
 
-.button{
-    margin: 0;
-    padding: sizes.$padding-small;
-    display: inline-block;
-    background-color: colors.$background-inverted;
-
-    color: colors.$text-inverted;
-    text-decoration: none;
-
-    &.selected{
-        background-color: colors.$background-default;
-        color: colors.$text-default;
+    @media (min-width: sizes.$breakpoint-m){
+        width: sizes.$image-splash-m;
     }
 
-    &:hover{
-        background-color: colors.$background-inverted-hover;
-        color: colors.$text-inverted;
+    @media (min-width: sizes.$breakpoint-l){
+        margin-top: - sizes.$spacing-large-dynamic-l;
+        width: sizes.$image-splash-l;
     }
 }
 
-article{
-    padding: 0 sizes.$padding-small sizes.$padding-small;
+img.card{
+    width: sizes.$image-card-s;
+    height: 100%;
 
-    a{
-        margin: 0;
-        text-decoration: none;
+    @media (min-width: sizes.$breakpoint-m){
+        width: sizes.$image-card-m;
     }
-}
 
-article section{
-    margin: 0;
-    padding: sizes.$padding-small;
-    background-color: colors.$background-default;
-    color: colors.$text-default;
-
-    &:nth-child(even){
-        margin: sizes.$padding-tiny 0;
+    @media (min-width: sizes.$breakpoint-l){
+        width: sizes.$image-card-l;
     }
 }
