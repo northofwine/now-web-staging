@@ -13,30 +13,32 @@
     <body>
         <div class="hider"></div>
         {% include header.html %}
-        <section class="sidebar">
-            {{ content }}
-        </section>
-        <ul class="content">
-        {% assign sorted = site.data.contentful.spaces.northofwine.product | sort_natural: 'product_short_name' %}
-        {% for product in sorted %}
-            <li>
-                <a class="card" href="/utvalg/{{ product.product_short_name | slugify: 'latin' }}">
-                    <img class="card" src="{{ product.image.url }}?w=100">
-                    <div class="content">
-                        <div class="meta">
-                            <p class="small">{{ product.product_type_name }}</p>
-                            <p class="small">{{ product.country }} | {{ product.region }}</p>
+        <div class="content">
+            <section class="sidebar">
+                {{ content }}
+            </section>
+            <ul class="list">
+            {% assign sorted = site.data.contentful.spaces.northofwine.product | sort_natural: 'product_short_name' %}
+            {% for product in sorted %}
+                <li>
+                    <a class="card" href="/utvalg/{{ product.product_short_name | slugify: 'latin' }}">
+                        <img class="card" src="{{ product.image.url }}?w=100">
+                        <div class="content">
+                            <div class="meta">
+                                <p class="small">{{ product.product_type_name }}</p>
+                                <p class="small">{{ product.country }} | {{ product.region }}</p>
+                            </div>
+                            <h2>{{ product.product_short_name }}</h2>
+                            {% assign price_split = product.sales_price | split: "." %}
+                            {% assign integral = price_split[0] %}
+                            {% assign fractional = price_split[1] | append: "00" | truncate: 2, "" %}
+                            <p>{{ integral }},{{ fractional }} kr</p>
                         </div>
-                        <h2>{{ product.product_short_name }}</h2>
-                        {% assign price_split = product.sales_price | split: "." %}
-                        {% assign integral = price_split[0] %}
-                        {% assign fractional = price_split[1] | append: "00" | truncate: 2, "" %}
-                        <p>{{ integral }},{{ fractional }} kr</p>
-                    </div>
-                </a>
-            </li>
-        {% endfor %}
-        </ul>
+                    </a>
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
         {% include footer.html %}
     </body>
 </html>

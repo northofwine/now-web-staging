@@ -122,28 +122,63 @@ footer{
 // Sections
 
 section.sidebar{
-    width: 100%;
     position: relative;
-
-    .text{
-        position: absolute;
-        right: 0;
-        text-align: right;
-    }
 
     &.horizontal{
         display: flex;
-        flex-direction: row;
-    }
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        align-items: flex-start;
+        min-width: 0;
+        height: min-content;
+        position: sticky;
+        flex-shrink: 0;
+        overflow: hidden;
+
+        .text{
+            text-align: right;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        a{
+            display: inline-block;
+        }
+
+        img.sidebar{
+            object-fit: contain;
+            min-width: 0;
+            max-height: 360px;
+            // margin-top: -240px;
+        }
     
+        @media (min-width: sizes.$breakpoint-m){
+            width: sizes.$sidebar-width-m;
+            img.sidebar{
+                margin-top: 0;
+            }
+            top: calc((2 * sizes.$spacing-medium-dynamic-m) + (2 * sizes.$spacing-medium) + 24px );
+        }
+    
+        @media (min-width: sizes.$breakpoint-l){
+            top: calc((2 * sizes.$spacing-medium-dynamic-l) + (2 * sizes.$spacing-medium) + 24px );
+        }
+    }
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+    gap: sizes.$spacing-medium-dynamic-s;
+
     @media (min-width: sizes.$breakpoint-m){
+        flex-direction: row;
+        gap: sizes.$spacing-medium-dynamic-m;
     }
 
     @media (min-width: sizes.$breakpoint-l){
-    }
-
-    @media (min-width: 960px){
-        max-width: sizes.$sidebar-width;
+        gap: sizes.$spacing-medium-dynamic-l;
     }
 }
 
@@ -165,23 +200,12 @@ ul{
     }
 }
 
-.content{
+ul.list{
     display: flex;
     flex-direction: column;
-    //flex-basis: calc(100% - sizes.$sidebar-width - sizes.$spacing-medium-dynamic-s);
     flex-basis: 50%;
     flex-grow: 1;
-    gap: sizes.$spacing-medium-dynamic-s;
     max-width: 100%;
-
-    @media (min-width: sizes.$breakpoint-m){
-         gap: sizes.$spacing-medium-dynamic-m;
-    //     flex-basis: calc(100% - sizes.$sidebar-width - sizes.$spacing-medium-dynamic-m);
-    }
-
-    @media (min-width: sizes.$breakpoint-l){
-    //     gap: sizes.$spacing-medium-dynamic-l;flex-basis: calc(100% - sizes.$sidebar-width - sizes.$spacing-medium-dynamic-l);
-    }
 }
 
 // Text elements
@@ -312,6 +336,11 @@ a.nav{
     font-style: normal;
     text-decoration: none;
 
+    img{
+        width: 24px;
+        height: 24px;
+    }
+
     &:hover{
         color: colors.$text-inverted;
         text-decoration: underline;
@@ -410,7 +439,7 @@ hr{
     width: 1px;
     background-color: colors.$border;
 
-    @media (max-width: 960px){
+    @media (max-width: sizes.$breakpoint-m){
         display: none;
     }
 }
@@ -422,14 +451,14 @@ hr{
     position: fixed;
     top: 0;
     left: 0;
-    height: sizes.$spacing-medium-dynamic-s;
+    height: calc(2 * sizes.$spacing-medium-dynamic-s);
 
     @media (min-width: sizes.$breakpoint-m){
-        height: sizes.$spacing-medium-dynamic-m;
+        height: calc(2 * sizes.$spacing-medium-dynamic-m);
     }
 
     @media (min-width: sizes.$breakpoint-l){
-        height: sizes.$spacing-medium-dynamic-l;
+        height: calc(2 * sizes.$spacing-medium-dynamic-l);
     }
 }
 
@@ -458,33 +487,4 @@ img.card{
     @media (min-width: sizes.$breakpoint-l){
         width: sizes.$image-card-l;
     }
-}
-
-img.icon{
-    width: 24px;
-    height: 24px;
-}
-
-img.sidebar{
-    //width: sizes.$image-sidebar-s;
-    // width: 75%;
-    width: sizes.$image-sidebar-s;
-    height: fit-content;
-    margin-top: - sizes.$image-sidebar-s;
-    margin-left: - sizes.$spacing-medium-dynamic-s;
-    //margin-left: -10%;
-
-    @media (min-width: 960px){
-        max-width: sizes.$sidebar-width;
-        position: sticky;
-        top: - sizes.$image-sidebar-s;
-    }
-
-    // @media (min-width: sizes.$breakpoint-m){
-    //     width: sizes.$image-sidebar-m;
-    // }
-
-    // @media (min-width: sizes.$breakpoint-l){
-    //     width: sizes.$image-sidebar-l;
-    // }
 }
