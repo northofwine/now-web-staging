@@ -4,16 +4,36 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta charset="utf-8">
         <title>{{ page.title }} - {{ site.title }}</title>
-        <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}">
+        <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+        <script src="{{ '/assets/javascript/main.js' | relative_url }}"></script> 
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
     </head>
     <body>
+        <div class="hider"></div>
         {% include header.html %}
-        <article>
+        <section class="sidebar horizontal">
+            <img class="sidebar" src="{{ page.image.url }}?w=480">
+            <ul class="text">
+                <li>
+                    <a class="nav" href="/utvalg">
+                        <img class="icon" src="{{ '/assets/icons/arrow-left.svg' | relative_url }}">
+                    </a>
+                </li>
+                <li>
+                    <a class="nav">
+                        {{ page.product_type_name }}
+                    </a>
+                </li>
+                <p class="tiny mono">{{ page.country }}</p>
+                <p class="tiny mono">{{ page.region }}</p>
+            </div>
+        </section>
+        <div class="divider"></div>
+        <div class="content">
             <section>
-                <img src="{{ page.image.url }}?w=100">
-                <h3>{{ page.product_type_name }}</h3>
-                <p>{{ page.country }} | {{ page.region }}</p>
-                <h2>{{ page.product_short_name }}</h2>
+                <h1>{{ page.product_short_name }}</h1>
                 <p>{{ page.volume | times: 1.0 | divided_by: 100 }} l | {{ page.packaging_material }} med {{ page.cork_type | downcase }}</p>
 
                 {% assign price_split = page.sales_price | split: "." %}
@@ -95,7 +115,7 @@
                     <dd>{{ page.cork_type }}</dd>
                 </dl>
             </section>
-        </article>
+        </div>
         {% include footer.html %}
     </body>
 </html>
