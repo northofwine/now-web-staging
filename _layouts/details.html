@@ -4,106 +4,108 @@
     <body>
         <div class="hider"></div>
         {% include header.html %}
-        <div class="content">
-            <section class="sidebar horizontal">
-                <ul class="text">
-                    <a class="nav" href="/utvalg">
-                        <img class="icon" src="/assets/icons/arrow-left.svg">
-                    </a>
-                    <a class="nav">
-                        {{ page.product_type_name }}
-                    </a>
-                    <p class="tiny mono">{{ page.country }}</p>
-                    <p class="tiny mono">{{ page.region }}</p>
-                </ul>
-                <img class="sidebar" src="{{ page.image.url }}?w=480">
+        <section class="sidebar product">
+            <nav>
+                <a href="/utvalg">
+                    <img class="icon" src="/assets/icons/arrow-left.svg">
+                </a>
+                <a href="/utvalg?=rodvin">
+                    {{ page.product_type_name }}
+                </a>
+                <a>
+                    {{ page.country }}
+                </a>
+                <a>
+                    {{ page.region }}
+                </a>
+            <nav>
+
+            <img class="sidebar" src="{{ page.image.url }}?w=480">
+        </section>
+        <div class="main">
+            <section>
+                <h1>{{ page.product_short_name }}</h1>
+                <p>{{ page.volume | times: 1.0 | divided_by: 100 }} l | {{ page.packaging_material }} med {{ page.cork_type | downcase }}</p>
+
+                {% assign price_split = page.sales_price | split: "." %}
+                {% assign integral = price_split[0] %}
+                {% assign fractional = price_split[1] | append: "00" | truncate: 2, "" %}
+
+                <p>{{ integral }},{{ fractional }} kr
+                {% if page.product_id %}
+                    | <a href="https://vinmonopolet.no/p/{{ page.product_id }}">Vinmonopolet</a>
+                {% endif %}
+                </p>
             </section>
-            <div class="divider"></div>
-            <div class="list">
-                <section>
-                    <h1>{{ page.product_short_name }}</h1>
-                    <p>{{ page.volume | times: 1.0 | divided_by: 100 }} l | {{ page.packaging_material }} med {{ page.cork_type | downcase }}</p>
-
-                    {% assign price_split = page.sales_price | split: "." %}
-                    {% assign integral = price_split[0] %}
-                    {% assign fractional = price_split[1] | append: "00" | truncate: 2, "" %}
-
-                    <p>{{ integral }},{{ fractional }} kr
-                    {% if page.product_id %}
-                        | <a href="https://vinmonopolet.no/p/{{ page.product_id }}">Vinmonopolet</a>
-                    {% endif %}
-                    </p>
-                </section>
-                <section>
-                    <dl>
-                        <dt>Beskrivelse</dt>
-                        <dd>{{ page.description }}</dd>
-                        <dt>Metode</dt>
-                        <dd>{{ page.production_method_storage}} </dd>
-                    </dl>
-                </section>
-                <section>
-                    <table>
-                        <thead>
-                            <tr>
-                                <td>Fylde</td>
-                                <td>Friskhet</td>
-                                {% if page.product_type_name == 'Rødvin' %}
-                                <td>Garvestoffer</td>
-                                {% else %} <!-- white, rose, and sparkling -->
-                                <td>Sødme</td>
-                                {% endif %}
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>{{ page.fullness }}</td>
-                                <td>{{ page.freshness }}</td>
-                                {% if page.product_type_name == 'Rødvin' %}
-                                <td>{{ page.tannins }}</td>
-                                {% else %} <!-- white, rose, and sparkling -->
-                                <td>{{ page.sweetness }}</td>
-                                {% endif %}
-                            </tr>
-                        </thead>
-                    </table>
-                    <dl>
-                        <dt>Passer til</dt>
-                        <dd>{{ page.recommended_food | join: ', ' | capitalize }}</dd>
-                        <dt>Lukt</dt>
-                        <dd>{{ page.odour }}</dd>
-                        <dt>Smak</dt>
-                        <dd>{{ page.taste }}</dd>
-                        <dt>Farge</dt>
-                        <dd>{{ page.colour }}</dd>
-                    </dl>
-                    <dl>
-                        <dt>Vårt varenummer</dt>
-                        <dd>{{ page.sku }}</dd>
-                        <dt>Vinmonopolets varenummer</dt>
-                        <dd>{{ page.product_id }}</dd>
-                        <dt>Druer</dt>
-                        <dd>
-                        {% for grape in page.grape_desc %}
-                            {{ grape }} {{ page.grape_pct[forloop.index0] }}
-                            {% unless forloop.last %}, {% endunless %}
-                        {% endfor %}
-                        </dd>
-                        <dt>Lagring</dt>
-                        <dd>{{ page.storage_potential }}</dd>
-                        <dt>Alkohol</dt>
-                        <dd>{{ page.alcohol_content }}</dd>
-                        <dt>Sukker</dt>
-                        <dd>{{ page.sugar }}</dd>
-                        <dt>Syre</dt>
-                        <dd>{{ page.acid }}</dd>
-                        <dt>Emballasje</dt>
-                        <dd>{{ page.packaging_material }}</dd>
-                        <dt>Kork</dt>
-                        <dd>{{ page.cork_type }}</dd>
-                    </dl>
-                </section>
-            </div>
+            <section>
+                <dl>
+                    <dt>Beskrivelse</dt>
+                    <dd>{{ page.description }}</dd>
+                    <dt>Metode</dt>
+                    <dd>{{ page.production_method_storage}} </dd>
+                </dl>
+            </section>
+            <section>
+                <table>
+                    <thead>
+                        <tr>
+                            <td>Fylde</td>
+                            <td>Friskhet</td>
+                            {% if page.product_type_name == 'Rødvin' %}
+                            <td>Garvestoffer</td>
+                            {% else %} <!-- white, rose, and sparkling -->
+                            <td>Sødme</td>
+                            {% endif %}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ page.fullness }}</td>
+                            <td>{{ page.freshness }}</td>
+                            {% if page.product_type_name == 'Rødvin' %}
+                            <td>{{ page.tannins }}</td>
+                            {% else %} <!-- white, rose, and sparkling -->
+                            <td>{{ page.sweetness }}</td>
+                            {% endif %}
+                        </tr>
+                    </thead>
+                </table>
+                <dl>
+                    <dt>Passer til</dt>
+                    <dd>{{ page.recommended_food | join: ', ' | capitalize }}</dd>
+                    <dt>Lukt</dt>
+                    <dd>{{ page.odour }}</dd>
+                    <dt>Smak</dt>
+                    <dd>{{ page.taste }}</dd>
+                    <dt>Farge</dt>
+                    <dd>{{ page.colour }}</dd>
+                </dl>
+                <dl>
+                    <dt>Vårt varenummer</dt>
+                    <dd>{{ page.sku }}</dd>
+                    <dt>Vinmonopolets varenummer</dt>
+                    <dd>{{ page.product_id }}</dd>
+                    <dt>Druer</dt>
+                    <dd>
+                    {% for grape in page.grape_desc %}
+                        {{ grape }} {{ page.grape_pct[forloop.index0] }}
+                        {% unless forloop.last %}, {% endunless %}
+                    {% endfor %}
+                    </dd>
+                    <dt>Lagring</dt>
+                    <dd>{{ page.storage_potential }}</dd>
+                    <dt>Alkohol</dt>
+                    <dd>{{ page.alcohol_content }}</dd>
+                    <dt>Sukker</dt>
+                    <dd>{{ page.sugar }}</dd>
+                    <dt>Syre</dt>
+                    <dd>{{ page.acid }}</dd>
+                    <dt>Emballasje</dt>
+                    <dd>{{ page.packaging_material }}</dd>
+                    <dt>Kork</dt>
+                    <dd>{{ page.cork_type }}</dd>
+                </dl>
+            </section>
         </div>
         {% include footer.html %}
     </body>
