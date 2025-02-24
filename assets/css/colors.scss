@@ -4,7 +4,9 @@ $background-inverted-hover: #222;
 
 $text-default: #000;
 $text-secondary: rgba(0,0,0,.5);
-$text-hover: #333;
-$text-inverted: #fff;
+$text-hover: rgba(25,25,25,1);
+$text-inverted: rgba(255,255,255,.9);
+$text-inverted-hover: rgba(255,255,255,1);
+$text-inverted-secondary: rgba(255,255,255,.5);
 
 $border: rgba(0,0,0,.2);

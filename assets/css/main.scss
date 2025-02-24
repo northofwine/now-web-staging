@@ -13,24 +13,14 @@ html{
     font-style: normal;
     font-size: sizes.$fontsize-regular-s;
     line-height: sizes.$lineheight-regular-s;
-
-    padding: sizes.$spacing-medium-dynamic-s;
-
-    @media (min-width: sizes.$breakpoint-m){
-        padding: sizes.$spacing-medium-dynamic-m;
-    }
-
-    @media (min-width: sizes.$breakpoint-l){
-        padding: sizes.$spacing-medium-dynamic-l;
-    }
 }
 
 // Main layout
 
 body {
     margin: 0;
-    padding: 0;
-    position: relative;
+    padding: 0 sizes.$spacing-medium-dynamic-s;
+    gap: sizes.$spacing-medium-dynamic-s;
 
     display: flex;
     flex-direction: column;
@@ -39,18 +29,19 @@ body {
         "header header header"
         "sidebar main main"
         "footer footer footer";
-    gap: sizes.$spacing-medium-dynamic-s;
 
     @media (min-width: sizes.$breakpoint-m){
         display: grid;
         gap: sizes.$spacing-medium-dynamic-m;
+        padding: 0 sizes.$spacing-medium-dynamic-m;
     }
 
     @media (min-width: sizes.$breakpoint-l){
         gap: sizes.$spacing-medium-dynamic-l;
+        padding: 0 sizes.$spacing-medium-dynamic-l;
     }
 
-    @media (min-width: 960px){
+    @media (min-width: 960px){ // Disable grid layout
         flex-direction: row;
         flex-wrap: wrap;
     }
@@ -79,44 +70,80 @@ body {
 header{
     grid-area: header;
     z-index: 100;
-    padding: 0;
-    flex-grow: 1;
-    flex-basis: 100%;
-    display: flex;
-    flex-direction: column;
+    padding-top: sizes.$spacing-medium-dynamic-s 0 0 0;
     position: sticky;
-    top: sizes.$spacing-medium-dynamic-s;
-    background: colors.$background-inverted;
-    color: colors.$text-inverted;
+    top: 0;
+    background: colors.$background-default;
+
 
     &.splash{
-        position: static;
+        position: relative;
+
+        img.logo{
+            width: 72px;
+            height: 72px;
+        }
+
+        img.illustration{
+            margin-left: auto;
+            width: sizes.$image-splash-s;
+        }
+
+        nav{
+            display: block;
+            position: static;
+            padding-right: 0;
+        }
+    
+        @media (min-width: sizes.$breakpoint-m){
+            img.illustration{
+                width: sizes.$image-splash-m;
+                position: absolute;
+                right: 0;
+                bottom: 0;
+            }
+        }
+
+        @media (min-width: sizes.$breakpoint-l){
+            img.illustration{
+                width: sizes.$image-splash-l;
+            }
+        }
+    }
+
+    .controls{
+        display: flex;
+        flex-direction: row;
+        border-bottom: 2px solid colors.$text-default;
+
+        p{
+            padding: sizes.$spacing-medium 0;
+            flex-grow: 1;
+            align-self: end;
+        }
     }
 
     nav{
-        padding: sizes.$spacing-medium;
-
-        a{
-            color: colors.$text-inverted;
-        }
+        min-height: 320px;
+        position: absolute;
+        left: 0;
+        right: 0;
     }
     
-    &:not(.minimized){
+    &.expanded{
         #open{display: none;}
     }
 
-    &.minimized{
-        nav, #close{display: none;}
+    &:not(.expanded){
+        nav#menu, #close{display: none;}
     }
-
-    top: sizes.$spacing-medium-dynamic-s;
     
     @media (min-width: sizes.$breakpoint-m){
-        top: sizes.$spacing-medium-dynamic-m;
+        padding-top: sizes.$spacing-medium-dynamic-m;
     }
 
     @media (min-width: sizes.$breakpoint-l){
-        top: sizes.$spacing-medium-dynamic-l;
+        padding-top: sizes.$spacing-medium-dynamic-l;
     }
 }
 
@@ -154,15 +181,17 @@ footer{
 nav{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
+    padding: sizes.$spacing-medium;
 }
 
 nav a{
     padding: sizes.$spacing-small 0;
     display: inline-block;
 
-    color: colors.$background-inverted;
+    color: colors.$text-default;
     font-family: "DM Mono", serif;
     font-weight: 400;
     font-style: normal;
@@ -173,14 +202,21 @@ nav a{
         height: 24px;
     }
 
-    &:hover{
-        color: colors.$text-hover;
-        text-decoration: underline;
-    }
-
     &:not([href]){
         color: colors.$text-secondary;
         pointer-events: none;
+    }
+}
+
+header nav{ // Specific colors for header navigation
+    background-color: colors.$background-inverted;
+
+    a{
+        color: colors.$text-inverted;
+
+        &:hover{
+            color: colors.$text-inverted-hover;
+        }
     }
 }
 
@@ -428,38 +464,6 @@ hr{
 
     @media (max-width: sizes.$breakpoint-m){
         display: none;
-    }
-}
-
-.hider{
-    z-index: 50;
-    background: colors.$background-default;
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: calc(2 * sizes.$spacing-medium-dynamic-s);
-
-    @media (min-width: sizes.$breakpoint-m){
-        height: calc(2 * sizes.$spacing-medium-dynamic-m);
-    }
-
-    @media (min-width: sizes.$breakpoint-l){
-        height: calc(2 * sizes.$spacing-medium-dynamic-l);
-    }
-}
-
-img.splash{
-    margin-left: auto;
-    width: sizes.$image-splash-s;
-
-    @media (min-width: sizes.$breakpoint-m){
-        width: sizes.$image-splash-m;
-    }
-
-    @media (min-width: sizes.$breakpoint-l){
-        margin-top: - sizes.$spacing-large-dynamic-l;
-        width: sizes.$image-splash-l;
     }
 }
 

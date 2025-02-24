@@ -1,4 +1,4 @@
 function expandMenu() {
-    var element = document.getElementById("menu");
-    element.classList.toggle("minimized");
+    var element = document.getElementsByTagName("header")[0];
+    element.classList.toggle("expanded");
   }
