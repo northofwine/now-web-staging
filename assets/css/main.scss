@@ -24,7 +24,6 @@ body {
 
     display: flex;
     flex-direction: column;
-    grid-template-columns: 1fr 1fr 1fr;
     grid-template-areas: 
         "header header header"
         "sidebar main main"
@@ -32,11 +31,13 @@ body {
 
     @media (min-width: sizes.$breakpoint-m){
         display: grid;
+        grid-template-columns: calc((100% - (sizes.$spacing-medium-dynamic-m * 2)) / 3);
         gap: sizes.$spacing-medium-dynamic-m;
         padding: 0 sizes.$spacing-medium-dynamic-m;
     }
 
     @media (min-width: sizes.$breakpoint-l){
+        grid-template-columns: calc((100% - (sizes.$spacing-medium-dynamic-l * 2)) / 3);
         gap: sizes.$spacing-medium-dynamic-l;
         padding: 0 sizes.$spacing-medium-dynamic-l;
     }
@@ -49,15 +50,21 @@ body {
 
 .sidebar{
     grid-area: sidebar;
-    display: flex;
-}
 
-.sidebar.product{
-    img{
-        width: 60%;
-        position: absolute;
-        top: 0;
-        right: 0;
+    nav{
+        top: sizes.$spacing-medium-dynamic-s + 74px;
+    }
+
+    @media (min-width: sizes.$breakpoint-m){
+        nav, .product-image{
+            position: sticky;
+            top: sizes.$spacing-medium-dynamic-m + 74px;
+        }
+    }
+    @media (min-width: sizes.$breakpoint-l){
+        nav, .product-image{
+            top: sizes.$spacing-medium-dynamic-l + 74px;
+        }
     }
 }
 
@@ -125,6 +132,7 @@ header{
 
     nav{
         min-height: 320px;
+        padding: sizes.$spacing-medium;
         position: absolute;
         left: 0;
         right: 0;
@@ -176,15 +184,42 @@ footer{
 
 // Sections
 
+.sidebar.details{
+    place-items: flex-start;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+
+    .product-image{
+        flex: 1 1 auto;
+        min-height: 24px;
+
+        img{
+            display: block;
+            width: auto;
+            max-height: 480px;
+        }
+    }
+
+    @media (min-width: sizes.$breakpoint-m){
+        .product-image img{
+            width: 100%;
+            height: auto;
+            max-width: 240px;
+            max-height: none;
+        }
+    }
+}
+
 // Lists
 
 nav{
     margin: 0;
-    padding: 0;
+    padding: sizes.$spacing-medium 0;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    padding: sizes.$spacing-medium;
+    place-items: flex-start;
 }
 
 nav a{

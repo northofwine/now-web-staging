@@ -2,12 +2,11 @@
 <html lang="{{ site.lang | default: "en-US" }}">
     {% include head.html %}
     <body>
-        <div class="hider"></div>
         {% include header.html %}
-        <section class="sidebar product">
+        <section class="sidebar details">
             <nav>
                 <a href="/utvalg">
-                    <img class="icon" src="/assets/icons/arrow-left.svg">
+                    <img class="icon" src="../assets/icons/arrow-left.svg">
                 </a>
                 <a href="/utvalg?=rodvin">
                     {{ page.product_type_name }}
@@ -18,9 +17,11 @@
                 <a>
                     {{ page.region }}
                 </a>
-            <nav>
+            </nav>
+            <div class="product-image">
+                <img src="{{ page.image.url }}?w=480">
+            </div>
 
-            <img class="sidebar" src="{{ page.image.url }}?w=480">
         </section>
         <div class="main">
             <section>

@@ -5,6 +5,17 @@
         {% include header.html %}
         <section class="sidebar">
             {{ content }}
+            <nav>
+                <a href="/utvalg?=rodvin">
+                    Rødvin
+                </a>
+                <a href="">
+                    Hvitvin
+                </a>
+                <a>
+                    Musserende
+                </a>
+            </nav>
         </section>
         <ul class="list main">
         {% assign sorted = site.data.contentful.spaces.northofwine.product | sort_natural: 'product_short_name' %}
