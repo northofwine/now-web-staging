@@ -296,6 +296,7 @@ h1{
     font-size: sizes.$fontsize-huge-s;
     line-height: sizes.$lineheight-huge-s;
     font-weight: 700;
+    margin: 0 0 sizes.$spacing-medium 0;
 
     @media (min-width: sizes.$breakpoint-m){
         font-size: sizes.$fontsize-huge-m;
@@ -341,7 +342,7 @@ h3{
 }
 
 p{
-    margin: 0;
+    margin: 0 0 sizes.$spacing-medium 0;
     font-size: sizes.$fontsize-regular-s;
     line-height: sizes.$lineheight-regular-s;
 
@@ -411,11 +412,24 @@ a.padded{
     text-decoration: none;
 }
 
-a.card{
+.imagecard{
+    max-height: 320px;
+    width: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+.card{
     display: flex;
     flex-direction: row;
     border: solid 1px colors.$border;
     text-decoration: none;
+
+    img{
+        width: sizes.$image-card-s;
+        object-fit: contain;
+        align-self: flex-start;
+    }
 
     .content{
         display: flex;
@@ -453,11 +467,13 @@ a.card{
     @media (min-width: sizes.$breakpoint-m){
         padding: sizes.$spacing-medium-dynamic-m;
         gap: sizes.$spacing-medium-dynamic-m;
+        img{width: sizes.$image-card-m;}
     }
 
     @media (min-width: sizes.$breakpoint-l){
         padding: sizes.$spacing-medium-dynamic-l;
         gap: sizes.$spacing-medium-dynamic-l;
+        img{width: sizes.$image-card-l;}
     }
 }
 
@@ -465,6 +481,13 @@ a.card{
 
 dl{
     margin: 0;
+
+    &.horizontal{
+        display: grid;
+        grid-template-rows: auto auto;
+        grid-auto-columns: 96px;
+        grid-auto-flow: column;
+    }
 }
 
 dt{
@@ -480,7 +503,7 @@ dt{
 }
 
 dd{
-    margin: 0 0 sizes.$spacing-tiny 0;
+    margin: 0 0 sizes.$spacing-medium 0;
     padding: 0;
     font-weight: 300;
 }
@@ -499,18 +522,5 @@ hr{
 
     @media (max-width: sizes.$breakpoint-m){
         display: none;
-    }
-}
-
-img.card{
-    width: sizes.$image-card-s;
-    height: 100%;
-
-    @media (min-width: sizes.$breakpoint-m){
-        width: sizes.$image-card-m;
-    }
-
-    @media (min-width: sizes.$breakpoint-l){
-        width: sizes.$image-card-l;
     }
 }

@@ -47,30 +47,27 @@
                 </dl>
             </section>
             <section>
-                <table>
-                    <thead>
-                        <tr>
-                            <td>Fylde</td>
-                            <td>Friskhet</td>
-                            {% if page.product_type_name == 'Rødvin' %}
-                            <td>Garvestoffer</td>
-                            {% else %} <!-- white, rose, and sparkling -->
-                            <td>Sødme</td>
-                            {% endif %}
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>{{ page.fullness }}</td>
-                            <td>{{ page.freshness }}</td>
-                            {% if page.product_type_name == 'Rødvin' %}
-                            <td>{{ page.tannins }}</td>
-                            {% else %} <!-- white, rose, and sparkling -->
-                            <td>{{ page.sweetness }}</td>
-                            {% endif %}
-                        </tr>
-                    </thead>
-                </table>
+                <dl class="horizontal">
+                    <dt>Fylde</dt>
+                    <dd>
+                        <img src="/assets/icons/circle-slice-{{ page.fullness }}.svg">
+                    </dd>
+                    <dt>Friskhet</dt>
+                    <dd>
+                        <img src="/assets/icons/circle-slice-{{ page.freshness }}.svg">
+                    </dd>
+                    {% if page.product_type_name == 'Rødvin' %}
+                    <dt>Garvestoffer</dt>
+                    <dd>
+                        <img src="/assets/icons/circle-slice-{{ page.tannins }}.svg">
+                    </dd>
+                    {% else %} <!-- white, rose, and sparkling -->
+                    <dt>Sødme</dt>
+                    <dd>
+                        <img src="/assets/icons/circle-slice-{{ page.sweetness }}.svg">
+                    </dd>
+                    {% endif %}
+                </dl>
                 <dl>
                     <dt>Passer til</dt>
                     <dd>{{ page.recommended_food | join: ', ' | capitalize }}</dd>

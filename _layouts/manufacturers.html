@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: "en-US" }}">
+    {% include head.html %}
+    <body>
+        {% include header.html %}
+        <section class="sidebar">
+            {{ content }}
+            <nav>
+                <a href="/produsenter?=Frankrike">
+                    Frankrike
+                </a>
+                <a href="">
+                    Spania
+                </a>
+                <a>
+                    Italia
+                </a>
+            </nav>
+        </section>
+        <ul class="list main">
+        {% assign sorted = site.data.contentful.spaces.northofwine.manufacturer | sort_natural: 'name' %}
+        {% for manufacturer in sorted %}
+            <li>
+                <img class="imagecard" src="{{ manufacturer.image.url }}?w=1200">
+                <div class="card" href="/produsenter/{{ manufacturer.name | slugify: 'latin' }}">
+                    <img src="{{ manufacturer.logo.url }}?w=480">
+                    <div class="content">
+                        <div class="meta">
+                            <!-- <p class="small">{{ manufacturer.country }}</p> -->
+                        </div>
+                        <h2>{{ manufacturer.name }}</h2>
+                        <p>{{ manufacturer.description }} kr</p>
+                        <a href="{{ manufacturer.link }}">Hjemmeside</a>
+                    </div>
+                </div>
+            </li>
+        {% endfor %}
+        </ul>
+        {% include footer.html %}
+    </body>
+</html>
