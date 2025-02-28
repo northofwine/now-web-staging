@@ -18,20 +18,30 @@
             </nav>
         </section>
         <ul class="list main">
-        {% assign sorted = site.data.contentful.spaces.northofwine.manufacturer | sort_natural: 'name' %}
-        {% for manufacturer in sorted %}
+        {% assign products = site.data.contentful.spaces.northofwine.product %}
+        {% assign manufacturers = site.data.contentful.spaces.northofwine.manufacturer %}
+        <!-- {% assign sorted_products = site.data.contentful.spaces.northofwine.manufacturer | sort_natural: 'name' %} -->
+        {% for manufacturer in manufacturers %}
+            {% assign filtered_products = products | if products.manufacturer.sys.id equals manufacturer.sys.id | sort_natural: 'product_short_name' %}
             <li>
                 <img class="imagecard" src="{{ manufacturer.image.url }}?w=1200">
-                <div class="card" href="/produsenter/{{ manufacturer.name | slugify: 'latin' }}">
-                    <img src="{{ manufacturer.logo.url }}?w=480">
-                    <div class="content">
-                        <div class="meta">
-                            <!-- <p class="small">{{ manufacturer.country }}</p> -->
-                        </div>
-                        <h2>{{ manufacturer.name }}</h2>
-                        <p>{{ manufacturer.description }} kr</p>
-                        <a href="{{ manufacturer.link }}">Hjemmeside</a>
-                    </div>
+                <div class="card manufacturer" href="/produsenter/{{ manufacturer.name | slugify: 'latin' }}">
+                    {% if manufacturer.logo.url %}
+                        <img src="{{ manufacturer.logo.url }}?w=480">
+                    {% endif %}
+                    <h2>{{ manufacturer.name }}</h2>
+                    <a href="{{ manufacturer.link }}">{{ manufacturer.link }}</a>
+                    <p>{{ manufacturer.description }}</p>
+                    <ul>
+                        <h3>Utvalg</h3>
+                        {% for product in filtered_products %}
+                            {% if product.manufacturer.sys.id == manufacturer.sys.id %}
+                            <li>
+                                <a href="/utvalg/{{ product.product_short_name | slugify: 'latin' }}">{{ product.product_short_name }}</a>
+                            </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
                 </div>
             </li>
         {% endfor %}

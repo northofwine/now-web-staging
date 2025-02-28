@@ -72,6 +72,10 @@ body {
     grid-area: main;
 }
 
+.full{
+    grid-column: span 2;
+}
+
 // UI elem
 
 header{
@@ -296,7 +300,7 @@ h1{
     font-size: sizes.$fontsize-huge-s;
     line-height: sizes.$lineheight-huge-s;
     font-weight: 700;
-    margin: 0 0 sizes.$spacing-medium 0;
+    margin: sizes.$spacing-medium 0;
 
     @media (min-width: sizes.$breakpoint-m){
         font-size: sizes.$fontsize-huge-m;
@@ -413,6 +417,8 @@ a.padded{
 }
 
 .imagecard{
+
+    grid-area: sidebar;
     max-height: 320px;
     width: 100%;
     display: block;
@@ -424,6 +430,21 @@ a.padded{
     flex-direction: row;
     border: solid 1px colors.$border;
     text-decoration: none;
+
+    &.manufacturer{
+        flex-wrap: wrap;
+        h2{
+            flex: 0 1 80%;
+        }
+        ul{
+            display: flex;
+            flex-direction: column;
+            flex: 1 0 auto;
+            gap: sizes.$padding-small;
+            li{
+            }
+        }
+    }
 
     img{
         width: sizes.$image-card-s;

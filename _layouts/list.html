@@ -18,7 +18,8 @@
             </nav>
         </section>
         <ul class="list main">
-        {% assign sorted = site.data.contentful.spaces.northofwine.product | sort_natural: 'product_short_name' %}
+        {% assign data = site.data.contentful.spaces.northofwine.product %}
+        {% assign sorted = data | sort_natural: 'product_short_name' %}
         {% for product in sorted %}
             <li>
                 <a class="card" href="/utvalg/{{ product.product_short_name | slugify: 'latin' }}">
