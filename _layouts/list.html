@@ -5,23 +5,14 @@
         {% include header.html %}
         <section class="sidebar">
             {{ content }}
-            <nav>
-                <a href="/utvalg?=rodvin">
-                    Rødvin
-                </a>
-                <a href="">
-                    Hvitvin
-                </a>
-                <a>
-                    Musserende
-                </a>
+            <nav id="filter">
             </nav>
         </section>
-        <ul class="list main">
+        <ul id="products" class="list main">
         {% assign data = site.data.contentful.spaces.northofwine.product %}
         {% assign sorted = data | sort_natural: 'product_short_name' %}
         {% for product in sorted %}
-            <li>
+            <li class="{{ product.product_type_name }}">
                 <a class="card" href="/utvalg/{{ product.product_short_name | slugify: 'latin' }}">
                     <img src="{{ product.image.url }}?w=480">
                     <div class="content">
@@ -41,4 +32,9 @@
         </ul>
         {% include footer.html %}
     </body>
+    <script>
+        console.log(getQuery());
+        filterProducts();
+        hideProducts(getQuery())
+    </script>
 </html>
