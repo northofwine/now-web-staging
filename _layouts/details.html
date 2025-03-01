@@ -44,6 +44,10 @@
                     <dd>{{ page.description }}</dd>
                     <dt>Metode</dt>
                     <dd>{{ page.production_method_storage}} </dd>
+                    <dt>Produsent</dt>
+                    <dd>
+                        <a href="/produsenter#{{ page.manufacturer.name | slugify: 'latin' }}">{{ page.manufacturer.name }}</a>
+                    </dd>
                 </dl>
             </section>
             <section>

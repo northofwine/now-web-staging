@@ -23,9 +23,9 @@
         <!-- {% assign sorted_products = site.data.contentful.spaces.northofwine.manufacturer | sort_natural: 'name' %} -->
         {% for manufacturer in manufacturers %}
             {% assign filtered_products = products | if products.manufacturer.sys.id equals manufacturer.sys.id | sort_natural: 'product_short_name' %}
-            <li>
+            <li id="{{ manufacturer.name | slugify: 'latin' }}">
                 <img class="imagecard" src="{{ manufacturer.image.url }}?w=1200">
-                <div class="card manufacturer" href="/produsenter/{{ manufacturer.name | slugify: 'latin' }}">
+                <div class="card manufacturer">
                     {% if manufacturer.logo.url %}
                         <img src="{{ manufacturer.logo.url }}?w=480">
                     {% endif %}
