@@ -358,11 +358,13 @@ p{
     @media (min-width: sizes.$breakpoint-m){
         font-size: sizes.$fontsize-regular-m;
         line-height: sizes.$lineheight-regular-m;
+        margin: 0 0 sizes.$lineheight-regular-m 0;
     }
 
     @media (min-width: sizes.$breakpoint-l){
         font-size: sizes.$fontsize-regular-l;
         line-height: sizes.$lineheight-regular-l;
+        margin: 0 0 sizes.$lineheight-regular-l 0;
     }
 }
 
@@ -506,7 +508,7 @@ a.padded{
 // Utility
 
 dl{
-    margin: 0;
+    margin: 0 0 sizes.$padding-large 0;
 
     &.horizontal{
         display: grid;
@@ -532,6 +534,10 @@ dd{
     margin: 0 0 sizes.$spacing-medium 0;
     padding: 0;
     font-weight: 300;
+
+    img{
+        width: sizes.$padding-large;
+    }
 }
 
 footer dd{
