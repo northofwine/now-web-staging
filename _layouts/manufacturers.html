@@ -5,7 +5,7 @@
         {% include header.html %}
         <section class="sidebar">
             {{ content }}
-            <nav>
+            <!-- <nav>
                 <a href="/produsenter?=Frankrike">
                     Frankrike
                 </a>
@@ -15,14 +15,13 @@
                 <a>
                     Italia
                 </a>
-            </nav>
+            </nav> -->
         </section>
         <ul class="list main">
-        {% assign products = site.data.contentful.spaces.northofwine.product %}
-        {% assign manufacturers = site.data.contentful.spaces.northofwine.manufacturer %}
+        {% assign products = site.data.contentful.spaces.northofwine.product | sort_natural: 'product_short_name' %}
+        {% assign manufacturers = site.data.contentful.spaces.northofwine.manufacturer | sort_natural: 'name' %}
         <!-- {% assign sorted_products = site.data.contentful.spaces.northofwine.manufacturer | sort_natural: 'name' %} -->
         {% for manufacturer in manufacturers %}
-            {% assign filtered_products = products | if products.manufacturer.sys.id equals manufacturer.sys.id | sort_natural: 'product_short_name' %}
             <li id="{{ manufacturer.name | slugify: 'latin' }}">
                 <img class="imagecard" src="{{ manufacturer.image.url }}?w=1200">
                 <div class="card manufacturer">
@@ -34,10 +33,10 @@
                     <p>{{ manufacturer.description }}</p>
                     <ul>
                         <h3>Utvalg</h3>
-                        {% for product in filtered_products %}
+                        {% for product in products %}
                             {% if product.manufacturer.sys.id == manufacturer.sys.id %}
                             <li>
-                                <a href="/utvalg/{{ product.product_short_name | slugify: 'latin' }}">{{ product.product_short_name }}</a>
+                                <a href="/utvalg/{{ product.slug }}">{{ product.product_short_name }}</a>
                             </li>
                             {% endif %}
                         {% endfor %}

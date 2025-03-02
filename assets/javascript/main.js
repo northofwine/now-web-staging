@@ -7,21 +7,38 @@ function getQuery() {
   const params = new Proxy(new URLSearchParams(window.location.search), {
     get: (searchParams, prop) => searchParams.get(prop),
   });
-  // Get the value of "some_key" in eg "https://example.com/?some_key=some_value"
-  let value = params.kategori; // "some_value"
-  return value;
+  if (params.kategori) {
+    return params.kategori;
+  } else {}
+}
+
+function listItems(category) {
+  var match = [];
+  var items = document.getElementById('products').getElementsByTagName('li');
+  var results = [];
+    
+  for (let i = 0; i < items.length; i++) {
+    if (category) {
+      if (items[i].className == category) {
+        match.push(items[i])
+      }
+    }
+  }
+
+  console.log('Alle viner, antall: ' + items.length);
+  console.log('Kategori: ' + category + ', antall: ' + match.length);
 }
 
 function hideProducts(query) {
   if(query) {
     var removed = [];
     var items = document.getElementById('products').getElementsByTagName('li');
+    
     for (let i = 0; i < items.length; i++) {
       if (items[i].className != query) {
         removed.push(items[i])
       }
     }
-    console.log(removed);
     for (let item of removed) {
         item.remove();
     }
@@ -33,7 +50,7 @@ function filterProducts() {
   var navigation = document.getElementById('filter');
   var categories = [];
   for (let i = 0; i < items.length; i++) {
-    categories.indexOf(items[i].className) === -1 ? categories.push(items[i].className) : console.log('Exists');
+    categories.indexOf(items[i].className) === -1 ? categories.push(items[i].className) : '';
   }
   categories.sort();
   var link = document.createElement('a');

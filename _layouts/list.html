@@ -10,10 +10,12 @@
         </section>
         <ul id="products" class="list main">
         {% assign data = site.data.contentful.spaces.northofwine.product %}
+        {{ data | size }}
+
         {% assign sorted = data | sort_natural: 'product_short_name' %}
         {% for product in sorted %}
             <li class="{{ product.product_type_name }}">
-                <a class="card" href="/utvalg/{{ product.product_short_name | slugify: 'latin' }}">
+                <a class="card" href="/utvalg/{{ product.slug }}">
                     <img src="{{ product.image.url }}?w=480">
                     <div class="content">
                         <div class="meta">
@@ -33,7 +35,7 @@
         {% include footer.html %}
     </body>
     <script>
-        console.log(getQuery());
+        listItems(getQuery());
         filterProducts();
         hideProducts(getQuery())
     </script>
