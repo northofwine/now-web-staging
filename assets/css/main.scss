@@ -81,7 +81,7 @@ body {
 header{
     grid-area: header;
     z-index: 100;
-    padding-top: sizes.$spacing-medium-dynamic-s 0 0 0;
+    padding-top: sizes.$spacing-medium-dynamic-s;
     position: sticky;
     top: 0;
     background: colors.$background-default;
