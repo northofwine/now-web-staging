@@ -20,6 +20,7 @@ html{
 body {
     margin: 0;
     padding: 0 sizes.$spacing-medium-dynamic-s;
+    padding-bottom: sizes.$spacing-large;
     gap: sizes.$spacing-medium-dynamic-s;
 
     display: flex;
@@ -168,6 +169,7 @@ footer{
     flex-grow: 1;
     flex-basis: 100%;
     gap: sizes.$spacing-medium-dynamic-s;
+    padding: 0 0 sizes.$spacing-large 0;
 
     @media (min-width: sizes.$breakpoint-m){
         gap: sizes.$spacing-medium-dynamic-m;
