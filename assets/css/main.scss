@@ -508,7 +508,7 @@ a.padded{
 // Utility
 
 dl{
-    margin: 0 0 sizes.$padding-large 0;
+    margin: sizes.$spacing-large 0;
 
     &.horizontal{
         display: grid;
@@ -519,7 +519,7 @@ dl{
 }
 
 dt{
-    margin: 0 0 sizes.$spacing-tiny 0;
+    margin: sizes.$spacing-medium 0 sizes.$spacing-small 0;
     padding: 0;
 
     font-family: "DM Mono", serif;
@@ -531,7 +531,7 @@ dt{
 }
 
 dd{
-    margin: 0 0 sizes.$spacing-medium 0;
+    margin: 0 0 sizes.$spacing-small 0;
     padding: 0;
     font-weight: 300;
 
