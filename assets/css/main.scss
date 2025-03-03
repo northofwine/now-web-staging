@@ -446,10 +446,8 @@ a.padded{
         ul{
             display: flex;
             flex-direction: column;
-            flex: 1 0 auto;
+            flex: 0 0 100%;
             gap: sizes.$padding-small;
-            li{
-            }
         }
     }
 
