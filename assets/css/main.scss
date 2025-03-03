@@ -131,6 +131,7 @@ header{
             padding: sizes.$spacing-medium 0;
             flex-grow: 1;
             align-self: end;
+            margin: 0;
         }
     }
 
@@ -183,7 +184,8 @@ footer{
     dl{
         flex-grow: 1;
         text-align: right;
-        padding: 0 0 sizes.$spacing-large 0;
+        padding: 0;
+        margin: 0;
     }
 
     dd{
