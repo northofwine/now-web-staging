@@ -58,23 +58,31 @@
             <section>
                 <dl class="horizontal">
                     <dt>Fylde</dt>
-                    <dd>
-                        <img src="/assets/icons/circle-slice-{{ page.fullness }}.svg">
-                    </dd>
+                    {% if page.fullness %}
+                        <dd>
+                            <img src="/assets/icons/circle-slice-{{ page.fullness }}.svg">
+                        </dd>
+                    {% endif %}
                     <dt>Friskhet</dt>
-                    <dd>
-                        <img src="/assets/icons/circle-slice-{{ page.freshness }}.svg">
-                    </dd>
+                    {% if page.freshness %}
+                        <dd>
+                            <img src="/assets/icons/circle-slice-{{ page.freshness }}.svg">
+                        </dd>
+                    {% endif %}
                     {% if page.product_type_name == 'Rødvin' %}
-                    <dt>Garvestoffer</dt>
-                    <dd>
-                        <img src="/assets/icons/circle-slice-{{ page.tannins }}.svg">
-                    </dd>
+                        {% if page.tannins %}
+                            <dt>Garvestoffer</dt>
+                            <dd>
+                                <img src="/assets/icons/circle-slice-{{ page.tannins }}.svg">
+                            </dd>
+                        {% endif %}
                     {% else %} <!-- white, rose, and sparkling -->
-                    <dt>Sødme</dt>
-                    <dd>
-                        <img src="/assets/icons/circle-slice-{{ page.sweetness }}.svg">
-                    </dd>
+                        {% if page.sweetness %}
+                            <dt>Sødme</dt>
+                            <dd>
+                                <img src="/assets/icons/circle-slice-{{ page.sweetness }}.svg">
+                            </dd>
+                        {% endif %}
                     {% endif %}
                 </dl>
                 <dl>

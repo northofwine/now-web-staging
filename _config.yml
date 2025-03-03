@@ -28,5 +28,4 @@ page_gen:
 - data: contentful.spaces.northofwine.product
   template: details
   dir: utvalg
-  #name: product_short_name
-  name_expr: record['product_short_name'].downcase.strip.gsub(/\’/, '-').gsub(/\'/, '-').gsub(/\.\ /, '-').gsub(/\./, '-').gsub(' ', '-').gsub(/\--/, '-').delete_suffix('-')
+  name: slug
