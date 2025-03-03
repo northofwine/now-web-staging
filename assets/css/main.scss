@@ -258,6 +258,7 @@ nav a{
 
 header nav{ // Specific colors for header navigation
     background-color: colors.$background-inverted;
+    color: colors.$text-inverted;
 
     a{
         color: colors.$text-inverted;
