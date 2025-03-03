@@ -16,7 +16,11 @@
         {% for product in sorted %}
             <li class="{{ product.product_type_name }}">
                 <a class="card" href="/utvalg/{{ product.slug }}">
-                    <img src="{{ product.image.url }}?w=480">
+                    {% if product.image.url %}
+                        <img src="{{ product.image.url }}?w=480">
+                    {% else %}
+                        <img src="/assets/images/bottle.png">
+                    {% endif %}
                     <div class="content">
                         <div class="meta">
                             <p class="small">{{ product.product_type_name }}</p>

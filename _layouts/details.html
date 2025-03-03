@@ -19,7 +19,11 @@
                 </a>
             </nav>
             <div class="product-image">
-                <img src="{{ page.image.url }}?w=480">
+                {% if page.image.url %}
+                    <img src="{{ page.image.url }}?w=480">
+                {% else %}
+                    <img src="/assets/images/bottle.png">
+                {% endif %}
             </div>
 
         </section>
@@ -43,10 +47,12 @@
                 <dl>
                     <dt>Metode</dt>
                     <dd>{{ page.production_method_storage}} </dd>
-                    <dt>Produsent</dt>
-                    <dd>
-                        <a href="/produsenter#{{ page.manufacturer.name | slugify: 'latin' }}">{{ page.manufacturer.name }}</a>
-                    </dd>
+                    {% if page.manufacturer %}
+                        <dt>Produsent</dt>
+                        <dd>
+                            <a href="/produsenter#{{ page.manufacturer.name | slugify: 'latin' }}">{{ page.manufacturer.name }}</a>
+                        </dd>
+                    {% endif %}
                 </dl>
             </section>
             <section>
@@ -84,8 +90,10 @@
                 <dl>
                     <dt>Vårt varenummer</dt>
                     <dd>{{ page.sku }}</dd>
-                    <dt>Vinmonopolets varenummer</dt>
-                    <dd>{{ page.product_id }}</dd>
+                    {% if page.product_id %}
+                        <dt>Vinmonopolets varenummer</dt>
+                        <dd>{{ page.product_id }}</dd>
+                    {% endif %}
                     <dt>Druer</dt>
                     <dd>
                     {% for grape in page.grape_desc %}
