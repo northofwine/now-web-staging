@@ -56,72 +56,7 @@
                 </dl>
             </section>
             <section>
-                <dl class="horizontal">
-                    <dt>Fylde</dt>
-                    {% if page.fullness %}
-                        <dd>
-                            <img src="/assets/icons/circle-slice-{{ page.fullness }}.svg">
-                        </dd>
-                    {% endif %}
-                    <dt>Friskhet</dt>
-                    {% if page.freshness %}
-                        <dd>
-                            <img src="/assets/icons/circle-slice-{{ page.freshness }}.svg">
-                        </dd>
-                    {% endif %}
-                    {% if page.product_type_name == 'Rødvin' %}
-                        {% if page.tannins %}
-                            <dt>Garvestoffer</dt>
-                            <dd>
-                                <img src="/assets/icons/circle-slice-{{ page.tannins }}.svg">
-                            </dd>
-                        {% endif %}
-                    {% else %} <!-- white, rose, and sparkling -->
-                        {% if page.sweetness %}
-                            <dt>Sødme</dt>
-                            <dd>
-                                <img src="/assets/icons/circle-slice-{{ page.sweetness }}.svg">
-                            </dd>
-                        {% endif %}
-                    {% endif %}
-                </dl>
-                <dl>
-                    <dt>Passer til</dt>
-                    <dd>{{ page.recommended_food | join: ', ' | capitalize }}</dd>
-                    <dt>Lukt</dt>
-                    <dd>{{ page.odour }}</dd>
-                    <dt>Smak</dt>
-                    <dd>{{ page.taste }}</dd>
-                    <dt>Farge</dt>
-                    <dd>{{ page.colour }}</dd>
-                </dl>
-                <dl>
-                    <dt>Vårt varenummer</dt>
-                    <dd>{{ page.sku }}</dd>
-                    {% if page.product_id %}
-                        <dt>Vinmonopolets varenummer</dt>
-                        <dd>{{ page.product_id }}</dd>
-                    {% endif %}
-                    <dt>Druer</dt>
-                    <dd>
-                    {% for grape in page.grape_desc %}
-                        {{ grape }} {{ page.grape_pct[forloop.index0] }}
-                        {% unless forloop.last %}, {% endunless %}
-                    {% endfor %}
-                    </dd>
-                    <dt>Lagring</dt>
-                    <dd>{{ page.storage_potential }}</dd>
-                    <dt>Alkohol</dt>
-                    <dd>{{ page.alcohol_content }}</dd>
-                    <dt>Sukker</dt>
-                    <dd>{{ page.sugar }}</dd>
-                    <dt>Syre</dt>
-                    <dd>{{ page.acid }}</dd>
-                    <dt>Emballasje</dt>
-                    <dd>{{ page.packaging_material }}</dd>
-                    <dt>Kork</dt>
-                    <dd>{{ page.cork_type }}</dd>
-                </dl>
+                {% include details/properties.html %}
             </section>
         </div>
         {% include footer.html %}
