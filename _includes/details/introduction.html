@@ -1,0 +1,28 @@
+<h1>{{ page.product_short_name }}</h1>
+
+{% if page.volume %}
+    <p>
+        {{ page.volume | times: 1.0 | divided_by: 100 }} liter
+        {% if page.packaging_material and page.cork_type %}
+            - {{ page.packaging_material }} med {{ page.cork_type | downcase }} 1
+        {% elsif page.packaging_material %}
+            - {{ page.packaging_material }}
+        {% elsif page.cork_type %}
+            - {{ page.cork_type }}
+        {% else %}
+        {% endif %}
+    </p>
+{% endif %}
+
+{% if page.sales_price %}
+    {% assign price_split = page.sales_price | split: "." %}
+    {% assign integral = price_split[0] %}
+    {% assign fractional = price_split[1] | append: "00" | truncate: 2, "" %}
+
+    <p>
+        {{ integral }},{{ fractional }} kr
+        {% if page.product_id %}
+            - tilgjengelig på <a href="https://vinmonopolet.no/p/{{ page.product_id }}">Vinmonopolet</a>
+        {% endif %}
+    </p>
+{% endif %}
