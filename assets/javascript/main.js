@@ -33,6 +33,7 @@ function hideProducts(query) {
   if(query) {
     var removed = [];
     var items = document.getElementById('products').getElementsByTagName('li');
+    var itemsAll = items.length;
     
     for (let i = 0; i < items.length; i++) {
       if (items[i].className != query) {
@@ -42,12 +43,16 @@ function hideProducts(query) {
     for (let item of removed) {
         item.remove();
     }
+    var itemsRemoved = document.getElementById('products').getElementsByTagName('li').length;
+    counter = document.createElement('p');
+    link = document.createElement('a');
+    counter.className = 'small mono counter';
+    counter.textContent = 'Viser ' + itemsRemoved + ' av ';
+    link.href = '/utvalg.html';
+    link.textContent = itemsAll + ' viner';
+    counter.appendChild(link);
+    document.getElementById('products').prepend(counter);
   }
-}
-
-function countProducts() {
-  var items = document.getElementById('products').getElementsByTagName('li');
-  console.log(items.length);
 }
 
 function filterProducts() {
