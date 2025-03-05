@@ -61,7 +61,11 @@
     {% endif %}
     {% if page.alcohol_content %}
         <dt>Alkohol</dt>
-        <dd>{{ page.alcohol_content }}</dd>
+        <dd>{{ page.alcohol_content | replace: '.', ',' }} %</dd>
+    {% endif %}
+    {% if page.volume %}
+        <dt>Volum</dt>
+        <dd>{{ page.volume | times: 1.0 | divided_by: 100 | replace: '.', ',' }} liter</dd>
     {% endif %}
     {% if page.sugar %}
         <dt>Sukker</dt>
