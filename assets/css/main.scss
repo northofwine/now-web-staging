@@ -98,13 +98,19 @@ header{
 
         img.illustration{
             margin-left: auto;
-            width: sizes.$image-splash-s;
+            min-width: sizes.$image-splash-s;
+            display: block;
+            width: 75%;
         }
 
         nav{
             display: block;
             position: static;
             padding-right: 0;
+        }
+        
+        h1{
+            padding-right: sizes.$spacing-medium;
         }
     
         @media (min-width: sizes.$breakpoint-m){
@@ -137,7 +143,6 @@ header{
     }
 
     nav{
-        min-height: 320px;
         padding: sizes.$spacing-medium;
         position: absolute;
         left: 0;
