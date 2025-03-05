@@ -61,10 +61,18 @@ body {
             position: sticky;
             top: sizes.$spacing-medium-dynamic-m + 74px;
         }
+        h1{
+            font-size: sizes.$fontsize-large-m;
+            line-height: sizes.$lineheight-large-m;
+        }
     }
     @media (min-width: sizes.$breakpoint-l){
         nav, .product-image{
             top: sizes.$spacing-medium-dynamic-l + 74px;
+        }
+        h1{
+            font-size: sizes.$fontsize-huge-m;
+            line-height: sizes.$lineheight-huge-m;
         }
     }
 }
@@ -336,7 +344,7 @@ h1{
     font-size: sizes.$fontsize-huge-s;
     line-height: sizes.$lineheight-huge-s;
     font-weight: 700;
-    margin: sizes.$spacing-medium 0;
+    margin: 0 0 sizes.$spacing-medium 0;
 
     @media (min-width: sizes.$breakpoint-m){
         font-size: sizes.$fontsize-huge-m;
