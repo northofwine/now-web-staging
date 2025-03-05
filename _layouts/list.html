@@ -21,7 +21,12 @@
                     <div class="content">
                         <div class="meta">
                             <p class="small">{{ product.product_type_name }}</p>
-                            <p class="small">{{ product.country }} | {{ product.region }}</p>
+                            <p class="small">
+                                {{ product.country }}
+                                {% if product.region %}
+                                    | {{ product.region }}
+                                {% endif %}
+                            </p>
                         </div>
                         <h2>{{ product.product_short_name }}</h2>
                         {% assign price_split = product.sales_price | split: "." %}
