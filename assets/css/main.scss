@@ -52,10 +52,6 @@ body {
 .sidebar{
     grid-area: sidebar;
 
-    nav{
-        top: sizes.$spacing-medium-dynamic-s + 74px;
-    }
-
     @media (min-width: sizes.$breakpoint-m){
         nav, .product-image{
             position: sticky;
@@ -110,12 +106,6 @@ header{
             display: block;
             width: 75%;
         }
-
-        nav{
-            display: block;
-            position: static;
-            padding-right: 0;
-        }
         
         h1{
             padding-right: sizes.$spacing-medium;
@@ -148,13 +138,6 @@ header{
             align-self: end;
             margin: 0;
         }
-    }
-
-    nav{
-        padding: sizes.$spacing-medium;
-        position: absolute;
-        left: 0;
-        right: 0;
     }
     
     &.expanded{
@@ -215,41 +198,56 @@ footer{
     justify-content: space-between;
     display: flex;
     flex-direction: row;
+    min-height: 480px;
 
     .product-image{
         flex: 1 1 auto;
-        min-height: 24px;
+        //min-height: 24px;
+        width: 50%;
+        z-index: -10;
 
         img{
             display: block;
-            width: auto;
+            width: 200%;
+            height: auto;
             max-height: 480px;
+            position: absolute;
+            right: 0;
+            object-fit: contain;
+            object-position: right 5%;
         }
     }
 
     @media (min-width: sizes.$breakpoint-m){
         .product-image img{
-            width: 100%;
-            height: auto;
-            max-width: 240px;
-            max-height: none;
+            // width: 100%;
+            // height: auto;
+            // max-width: 240px;
+            // max-height: none;
         }
     }
 }
 
 // Lists
 
+// Navigations
+
 nav{
     margin: 0;
-    padding: sizes.$spacing-medium 0;
+    padding: 0 0 0 sizes.$spacing-small;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     place-items: flex-start;
+
+    h1{
+        padding: sizes.$spacing-small;
+        margin: 0;
+    }
 }
 
 nav a{
-    padding: sizes.$spacing-small 0;
+    padding: sizes.$spacing-small;
     display: inline-block;
 
     color: colors.$text-default;
@@ -290,17 +288,25 @@ nav a{
     }
 }
 
-header nav{ // Specific colors for header navigation
+header nav{
+    position: absolute;
+    left: 0;
+    right: 0;
     background-color: colors.$background-inverted;
+    padding: sizes.$spacing-small;
     color: colors.$text-inverted;
 
-    a{
-        color: colors.$text-inverted;
+    a{color: colors.$text-inverted;}
+    a:hover{color: colors.$text-inverted-hover;}
+}
 
-        &:hover{
-            color: colors.$text-inverted-hover;
-        }
-    }
+.splash nav{
+    position: static;
+}
+
+.sidebar nav{
+    flex: 0 0 auto;
+    a{background-color: colors.$background-transparent;}
 }
 
 ul{

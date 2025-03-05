@@ -4,18 +4,9 @@
     <body>
         {% include header.html %}
         <section class="sidebar">
-            {{ content }}
-            <!-- <nav>
-                <a href="/produsenter?=Frankrike">
-                    Frankrike
-                </a>
-                <a href="">
-                    Spania
-                </a>
-                <a>
-                    Italia
-                </a>
-            </nav> -->
+            <nav>
+                {{ content }}
+            </nav>
         </section>
         <ul class="list main">
         {% assign products = site.data.contentful.spaces.northofwine.product | sort_natural: 'product_short_name' %}
