@@ -261,8 +261,13 @@ nav a{
     }
 
     &.arrow{
-        &::before{
+        &.back::before{
             content: url("/assets/icons/arrow-left.svg");
+        }
+        &.selected::before{
+            content: url("/assets/icons/arrow-right.svg");
+        }
+        &::before{
             display: inline-block;
             vertical-align: top;
             height: 24px;

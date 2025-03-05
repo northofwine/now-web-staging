@@ -45,6 +45,11 @@ function hideProducts(query) {
   }
 }
 
+function countProducts() {
+  var items = document.getElementById('products').getElementsByTagName('li');
+  console.log(items.length);
+}
+
 function filterProducts() {
   var items = document.getElementById('products').getElementsByTagName('li');
   var navigation = document.getElementById('filter');
@@ -60,14 +65,9 @@ function filterProducts() {
   for (let i = 0; i < categories.length; i++) {
     var link = document.createElement('a');
     link.href = '?kategori=' + categories[i];
+    link.textContent = categories[i];
     if (categories[i] == getQuery()) {
-      var icon = document.createElement('img');
-      icon.src = 'test.svg';
-      link.appendChild(icon);
-      link.textContent = '-> ' + categories[i];
-    }
-    else {
-      link.textContent = categories[i];
+      link.className += 'arrow selected';
     }
     navigation.appendChild(link);
   }
