@@ -12,23 +12,6 @@ function getQuery() {
   } else {}
 }
 
-function listItems(category) {
-  var match = [];
-  var items = document.getElementById('products').getElementsByTagName('li');
-  var results = [];
-    
-  for (let i = 0; i < items.length; i++) {
-    if (category) {
-      if (items[i].className == category) {
-        match.push(items[i])
-      }
-    }
-  }
-
-  console.log('Alle viner, antall: ' + items.length);
-  console.log('Kategori: ' + category + ', antall: ' + match.length);
-}
-
 function hideProducts(query) {
   if(query) {
     var removed = [];
