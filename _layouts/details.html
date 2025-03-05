@@ -5,18 +5,12 @@
         {% include header.html %}
         <section class="sidebar details">
             <nav>
-                <a href="/utvalg">
-                    <img class="icon" src="../assets/icons/arrow-left.svg">
+                <a class="arrow back" href="/utvalg">Alle
+                    <!-- <img class="icon" src="../assets/icons/arrow-left.svg"> -->
                 </a>
-                <a href="/utvalg.html?kategori={{ page.product_type_name }}">
-                    {{ page.product_type_name }}
-                </a>
-                <a>
-                    {{ page.country }}
-                </a>
-                <a>
-                    {{ page.region }}
-                </a>
+                <a href="/utvalg.html?kategori={{ page.product_type_name }}">{{ page.product_type_name }}</a>
+                <a>{{ page.country }}</a>
+                <a>{{ page.region }}</a>
             </nav>
             <div class="product-image">
                 {% if page.image.url %}

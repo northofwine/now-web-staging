@@ -245,6 +245,11 @@ nav a{
     font-style: normal;
     text-decoration: none;
 
+    &:hover{
+        color: colors.$text-hover;
+        text-decoration: underline;
+    }
+
     img{
         width: 24px;
         height: 24px;
@@ -253,6 +258,17 @@ nav a{
     &:not([href]){
         color: colors.$text-secondary;
         pointer-events: none;
+    }
+
+    &.arrow{
+        &::before{
+            content: url("/assets/icons/arrow-left.svg");
+            display: inline-block;
+            vertical-align: top;
+            height: 24px;
+            width: 24px;
+            margin-right: sizes.$spacing-tiny;
+        }
     }
 }
 
