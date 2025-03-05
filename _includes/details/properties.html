@@ -50,8 +50,8 @@
     <dt>Druer</dt>
     <dd>
         {% for grape in page.grape_desc %}
-            {{ grape }} {{ page.grape_pct[forloop.index0] }}
-            {% unless forloop.last %}, {% endunless %}
+            {{ grape }} {{ page.grape_pct[forloop.index0] }} %
+            {%- unless forloop.last -%}, {% endunless -%}
         {% endfor %}
     </dd>
     {% endif %}
