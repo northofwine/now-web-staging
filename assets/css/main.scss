@@ -548,7 +548,7 @@ dl{
 }
 
 dt{
-    margin: sizes.$spacing-medium 0 sizes.$spacing-small 0;
+    margin: sizes.$spacing-medium 0 sizes.$spacing-tiny 0;
     padding: 0;
 
     font-family: "DM Mono", serif;
@@ -569,8 +569,12 @@ dd{
     }
 }
 
-footer dd{
+footer dt{
     margin: 0 0 sizes.$spacing-tiny 0;
+}
+
+footer dl{
+    margin: 0 0 sizes.$spacing-medium 0;
 }
 
 hr{
