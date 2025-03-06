@@ -5,7 +5,7 @@
 
 html{
     background: colors.$background-default;
-    color: colors.$text-default;
+    color: colors.$text-normal-default;
 
     font-family: "DM Sans", serif;
     font-optical-sizing: auto;
@@ -130,7 +130,7 @@ header{
     .controls{
         display: flex;
         flex-direction: row;
-        border-bottom: 2px solid colors.$text-default;
+        border-bottom: 2px solid colors.$text-normal-default;
 
         p{
             padding: sizes.$spacing-medium 0;
@@ -250,14 +250,14 @@ nav a{
     padding: sizes.$spacing-small;
     display: inline-block;
 
-    color: colors.$text-default;
+    color: colors.$text-normal-default;
     font-family: "DM Mono", serif;
     font-weight: 400;
     font-style: normal;
     text-decoration: none;
 
     &:hover{
-        color: colors.$text-hover;
+        color: colors.$text-normal-hover;
         text-decoration: underline;
     }
 
@@ -267,7 +267,7 @@ nav a{
     }
 
     &:not([href]){
-        color: colors.$text-secondary;
+        color: colors.$text-normal-secondary;
         pointer-events: none;
     }
 
@@ -294,10 +294,10 @@ header nav{
     right: 0;
     background-color: colors.$background-inverted;
     padding: sizes.$spacing-small;
-    color: colors.$text-inverted;
+    color: colors.$text-inverted-default;
 
-    a{color: colors.$text-inverted;}
-    a:hover{color: colors.$text-inverted-hover;}
+    a{color: colors.$text-inverted-default;}
+    a:hover{color: colors.$text-inverted-default-hover;}
 }
 
 .splash nav{
@@ -454,11 +454,11 @@ p.mono{
 
 a{
     margin: 0;
-    color: colors.$text-default;
+    color: colors.$text-normal-default;
     text-decoration: underline;
 
     &:hover{
-        color: colors.$text-default;
+        color: colors.$text-normal-default;
         text-decoration: none;
     }
 
@@ -485,7 +485,7 @@ a.padded{
 .card{
     display: flex;
     flex-direction: row;
-    border: solid 1px colors.$border;
+    border: solid 1px colors.$border-normal;
     text-decoration: none;
 
     &.manufacturer{
@@ -601,12 +601,12 @@ hr{
     flex-basis: 100%;
     margin: 0;
     border: none;
-    border-top: 1px solid colors.$border;
+    border-top: 1px solid colors.$border-normal;
 }
 
 .divider{
     width: 1px;
-    background-color: colors.$border;
+    background-color: colors.$border-normal;
 
     @media (max-width: sizes.$breakpoint-m){
         display: none;

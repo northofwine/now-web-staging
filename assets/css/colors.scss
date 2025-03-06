@@ -1,13 +1,18 @@
-$background-default: #fff;
-$background-inverted: #000;
-$background-inverted-hover: #222;
+$background-default: rgba(255,255,255,1);
+$background-inverted: rgba(0,0,0,1)
 $background-transparent: rgba(255,255,255,.5);
 
-$text-default: #000;
-$text-secondary: rgba(0,0,0,.5);
-$text-hover: rgba(25,25,25,1);
-$text-inverted: rgba(255,255,255,.9);
-$text-inverted-hover: rgba(255,255,255,1);
-$text-inverted-secondary: rgba(255,255,255,.5);
+// Text
+$text-normal-default: rgba(0,0,0,.9);
+$text-normal-hover: rgba(25,25,25,1);
+$text-normal-active: rgba(25,25,25,.8);
+$text-normal-secondary: rgba(0,0,0,.5);
 
-$border: rgba(0,0,0,.2);
+$text-inverted-default: rgba(255,255,255,.9);
+$text-inverted-hover: rgba(255,255,255,1);
+$text-inverted-active: rgba(255,255,255,.8);
+$text-inverted-secondary: rgba(75, 73, 73, 0.5);
+
+// Elements
+$border-normal: rgba(0,0,0,.2);
+$border-normal-normal-strong: rgba(0,0,0,1);
