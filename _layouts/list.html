@@ -3,45 +3,38 @@
     {% include head.html %}
     <body>
         {% include header.html %}
-        <section class="sidebar">
-            <nav id="filter">
+            <section id="sidebar">
                 {{ content }}
-            </nav>
-        </section>
-        <ul id="products" class="list main">
-        {% assign sorted = site.data.contentful.spaces.northofwine.product | sort_natural: 'product_short_name' %}
-        {% for product in sorted %}
-            <li class="{{ product.product_type_name }}">
-                <a class="card" href="/utvalg/{{ product.slug }}">
-                    {% if product.image.url %}
-                        <img src="{{ product.image.url }}?w=480">
-                    {% else %}
-                        <img src="/assets/images/bottle.png">
-                    {% endif %}
-                    <div class="content">
-                        <div class="meta">
-                            <p class="small">{{ product.product_type_name }}</p>
-                            <p class="small">
-                                {{ product.country }}
-                                {% if product.region %}
-                                    | {{ product.region }}
-                                {% endif %}
-                            </p>
-                        </div>
-                        <h2>{{ product.product_short_name }}</h2>
-                        {% assign price_split = product.sales_price | split: "." %}
-                        {% assign integral = price_split[0] %}
-                        {% assign fractional = price_split[1] | append: "00" | truncate: 2, "" %}
-                        <p>{{ integral }},{{ fractional }} kr</p>
-                    </div>
-                </a>
-            </li>
-        {% endfor %}
-        </ul>
+                <nav id="filter">
+                </nav>
+            </section>
+
+            <ul id="main">
+            {% assign products = site.data.contentful.spaces.northofwine.product | sort_natural: 'product_short_name' %}
+            {% assign manufacturers = site.data.contentful.spaces.northofwine.manufacturer | sort_natural: 'name' %}
+            {% assign people = site.data.contentful.spaces.northofwine.person | sort_natural: 'name' %}
+
+            {% if page.url == '/utvalg.html' %}
+                {% for product in products %}
+                    {% include list/product.html product=product %}
+                {% endfor %}
+            {% elsif page.url == '/produsenter.html' %}
+                {% for manufacturer in manufacturers %}
+                    {% include list/manufacturer.html product=product manufacturer=manufacturer %}
+                {% endfor %}
+            {% elsif page.url == '/omoss.html' %}
+                {% for person in people %}
+                    {% include list/person.html person=person %}
+                {% endfor %}
+            {% endif %}
+            </ul>
+
         {% include footer.html %}
     </body>
-    <script>
-        filterProducts();
-        hideProducts(getQuery())
-    </script>
+    {% if page.url == '/utvalg.html' %}
+        <script>
+            filterProducts();
+            hideProducts(getQuery())
+        </script>
+    {% endif %}
 </html>

@@ -1,21 +1,21 @@
 <dl class="horizontal">
     {% if page.fullness %}
         <dt>Fylde</dt>
-        <dd><img src="/assets/icons/slice-{{ page.fullness }}.svg"></dd>
+        <dd><img class="icon large" src="/assets/icons/slice-{{ page.fullness }}.svg"></dd>
     {% endif %}
     {% if page.freshness %}
         <dt>Friskhet</dt>
-        <dd><img src="/assets/icons/slice-{{ page.freshness }}.svg"></dd>
+        <dd><img class="icon large" src="/assets/icons/slice-{{ page.freshness }}.svg"></dd>
     {% endif %}
     {% if page.product_type_name == 'Rødvin' %}
         {% if page.tannins %}
             <dt>Garvestoffer</dt>
-            <dd><img src="/assets/icons/slice-{{ page.tannins }}.svg"></dd>
+            <dd><img class="icon large" src="/assets/icons/slice-{{ page.tannins }}.svg"></dd>
         {% endif %}
     {% else %} <!-- white, rose, and sparkling -->
         {% if page.sweetness %}
             <dt>Sødme</dt>
-            <dd><img src="/assets/icons/slice-{{ page.sweetness }}.svg"></dd>
+            <dd><img class="icon large" src="/assets/icons/slice-{{ page.sweetness }}.svg"></dd>
         {% endif %}
     {% endif %}
 </dl>

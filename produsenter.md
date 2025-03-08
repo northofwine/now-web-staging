@@ -1,5 +1,5 @@
 ---
-layout: manufacturers
+layout: list
 title: "Våre produsenter"
 ---
 

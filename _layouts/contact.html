@@ -3,12 +3,10 @@
     {% include head.html %}
     <body>
         {% include header.html %}
-        <section class="sidebar">
-            <nav>
-                {{ content }}
-            </nav>
+        <section id="sidebar">
+            {{ content }}
         </section>
-        <div class="main">
+        <section id="main">
             <dl>
                 <dt>E-post</dt>
                 <dd>
@@ -49,7 +47,7 @@
                 <dt>Adresse</dt>
                 <dd>{{ site.organization.adress.street }}<br>{{ site.organization.adress.zip }} {{ site.organization.adress.city }}</dd>
             </dl>
-        </div>
+        </section>
         {% include footer.html %}
     </body>
 </html>

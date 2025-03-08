@@ -3,31 +3,30 @@
     {% include head.html %}
     <body>
         {% include header.html %}
-        <section class="sidebar details">
-            <nav>
-                <a class="arrow back" href="/utvalg">Alle
-                    <!-- <img class="icon" src="../assets/icons/arrow-left.svg"> -->
-                </a>
-                <a href="/utvalg.html?kategori={{ page.product_type_name }}">{{ page.product_type_name }}</a>
-                <a>{{ page.country }}</a>
-                <a>{{ page.region }}</a>
-            </nav>
-            <div class="product-image">
-                {% if page.image.url %}
-                    <img src="{{ page.image.url }}?w=480">
-                {% else %}
-                    <img src="/assets/images/bottle.png">
-                {% endif %}
-            </div>
+        <section id="sidebar">
+            {% if page.image.url %}
+                <img src="{{ page.image.url }}?w=480">
+            {% else %}
+                <img src="/assets/images/bottle.png">
+            {% endif %}
 
         </section>
-        <div class="main">
+        <div id="main">
+            <nav class="horizontal">
+                <a class="button" href="javascript:history.back()">
+                    <img class="icon" src="/assets/icons/arrow-left.svg">
+                </a>
+                <a class="button" href="/utvalg">Utvalg</a>
+                <span class="button">/</span>
+                <a class="button" href="/utvalg.html?kategori={{ page.product_type_name }}">{{ page.product_type_name }}</a>
+            </nav>
             <section>
                 {% include details/introduction.html %}
             </section>
             <section>
                 {% include details/description.html %}
             </section>
+            <hr>
             <section>
                 {% include details/properties.html %}
             </section>

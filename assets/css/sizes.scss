@@ -1,12 +1,10 @@
-$padding-large: 48px;
-$padding-medium: 24px;
-$padding-small: 12px;
-$padding-tiny: 4px;
+// Spacing
 
 $spacing-tiny: 4px;
 $spacing-small: 12px;
 $spacing-medium: 24px;
 $spacing-large: 48px;
+$spacing-huge: 96px;
 
 $spacing-tiny-dynamic-s: 4px;
 $spacing-tiny-dynamic-m: 8px;
@@ -25,6 +23,10 @@ $spacing-large-dynamic-m: 72px;
 $spacing-large-dynamic-l: 96px;
 
 // IMAGES
+
+$card-image-width-s: 96px;
+$card-image-width-m: 128px;
+$card-image-width-l: 160px;
 
 $image-card-s: 72px;
 $image-card-m: 84px;
@@ -68,9 +70,10 @@ $lineheight-small-m: 20px;
 $fontsize-small-l: 20px;
 $lineheight-small-l: 24px;
 
-
 $fontsize-regular: 16px;
 $lineheight-regular: 24px;
+
+$line-length: 720px;
 
 // RESPONSIVITY
 

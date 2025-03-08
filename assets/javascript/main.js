@@ -1,6 +1,19 @@
 function expandMenu() {
     var element = document.getElementsByTagName("header")[0];
-    element.classList.toggle("expanded");
+    element.classList.toggle("minimized");
+
+    var body = document.getElementsByTagName('body')[0];
+    var overlay = document.createElement('div');
+
+    if (element.classList != 'minimized'){
+      overlay.id = 'overlay';
+      overlay.onclick = expandMenu;
+      body.appendChild(overlay);
+    } else {
+      item = document.getElementById('overlay') ;
+      item.remove();
+    }
+
   }
 
 function getQuery() {
@@ -13,33 +26,39 @@ function getQuery() {
 }
 
 function hideProducts(query) {
+  console.log(query)
   if(query) {
     var removed = [];
-    var items = document.getElementById('products').getElementsByTagName('li');
-    var itemsAll = items.length;
+    var items = document.getElementById('main').getElementsByTagName('li');
     
-    for (let i = 0; i < items.length; i++) {
-      if (items[i].className != query) {
-        removed.push(items[i])
+    for (let item of items) {
+        if (item.className != query) {
+          removed.push(item)
+        }
+    }
+
+    if (removed.length < items.length){
+      for (let item of removed) {
+          item.remove();
       }
     }
-    for (let item of removed) {
-        item.remove();
-    }
-    var itemsRemoved = document.getElementById('products').getElementsByTagName('li').length;
-    counter = document.createElement('p');
-    link = document.createElement('a');
-    counter.className = 'small mono counter';
-    counter.textContent = 'Viser ' + itemsRemoved + ' av ';
-    link.href = '/utvalg.html';
-    link.textContent = itemsAll + ' viner';
-    counter.appendChild(link);
-    document.getElementById('products').prepend(counter);
+
+    // counter = document.createElement('p');
+    // counter.className = 'small mono counter';
+    // counter.textContent = 'Viser ' + items.length + ' av ';
+
+    // link = document.createElement('a');
+    // counter.className = 'small mono';
+    // link.textContent = (items.length + removed.length) + ' viner';
+    // link.href = '/utvalg.html';
+
+    // counter.appendChild(link);
+    // document.getElementById('main').prepend(counter);
   }
 }
 
 function filterProducts() {
-  var items = document.getElementById('products').getElementsByTagName('li');
+  var items = document.getElementById('main').getElementsByTagName('li');
   var navigation = document.getElementById('filter');
   var categories = [];
   for (let i = 0; i < items.length; i++) {
@@ -47,15 +66,17 @@ function filterProducts() {
   }
   categories.sort();
   var link = document.createElement('a');
+  link.className = 'button';
   link.href = '/utvalg.html';
   link.textContent = 'Alle viner';
   navigation.appendChild(link);
   for (let i = 0; i < categories.length; i++) {
     var link = document.createElement('a');
+    link.className = 'button';
     link.href = '?kategori=' + categories[i];
     link.textContent = categories[i];
     if (categories[i] == getQuery()) {
-      link.className += 'arrow selected';
+      link.className += ' selected';
     }
     navigation.appendChild(link);
   }

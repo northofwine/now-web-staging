@@ -1,10 +1,13 @@
 $background-default: rgba(255,255,255,1);
 $background-inverted: rgba(0,0,0,1);
 $background-transparent: rgba(255,255,255,.5);
+$background-texture: url("/assets/images/texture.png");
+
+
 
 // Text
-$text-normal-default: rgba(0,0,0,.9);
-$text-normal-hover: rgba(25,25,25,1);
+$text-normal-default: rgba(40,40,40,.9);
+$text-normal-hover: rgba(0,0,0,1);
 $text-normal-active: rgba(25,25,25,.8);
 $text-normal-secondary: rgba(0,0,0,.5);
 
@@ -15,4 +18,4 @@ $text-inverted-secondary: rgba(75, 73, 73, 0.5);
 
 // Elements
 $border-normal: rgba(0,0,0,.2);
-$border-normal-normal-strong: rgba(0,0,0,1);
+$border-normal-strong: rgba(0,0,0,1);
