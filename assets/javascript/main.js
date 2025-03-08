@@ -1,15 +1,18 @@
 function expandMenu() {
     var element = document.getElementsByTagName("header")[0];
+    var icon = document.getElementById('menu').getElementsByTagName('img')[0];
     element.classList.toggle("minimized");
 
     var body = document.getElementsByTagName('body')[0];
     var overlay = document.createElement('div');
 
     if (element.classList != 'minimized'){
+      icon.src = '/assets/icons/close.svg'
       overlay.id = 'overlay';
       overlay.onclick = expandMenu;
       body.appendChild(overlay);
     } else {
+      icon.src = '/assets/icons/menu.svg'
       item = document.getElementById('overlay') ;
       item.remove();
     }

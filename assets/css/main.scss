@@ -497,7 +497,6 @@ img.icon{
     }
 }
 
-// Colors
 .inverted{
     background: colors.$background-texture;
     background: url('/assets/images/texture.png');
@@ -521,8 +520,6 @@ img.icon{
     backdrop-filter: blur(8px);
     background-color: rgba(255,255,255,.25);
 }
-
-// Default margin in sections
 
 section, header, footer{
     & > * {
