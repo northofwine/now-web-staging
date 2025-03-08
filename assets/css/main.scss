@@ -115,7 +115,7 @@ header{
     }
 
     &.splash{
-        position: static;
+        position: relative;
     
         .controls{
             border: none;
@@ -131,15 +131,15 @@ header{
             max-width: 288px;
             width: 100%;
             margin-left: auto;
+            position: absolute;
+            bottom: 0;
+            right: 0;
     
             @media (min-width: sizes.$breakpoint-m){
-                position: absolute;
                 max-height: 100%;
                 max-width: 50%;
                 object-fit: contain;
                 object-position: bottom right;
-                bottom: 0;
-                right: 0;
             }
         }
     }
@@ -248,11 +248,17 @@ nav{
 
         img{
             width: sizes.$card-image-width-s;
-            max-height: 240px;
+            max-height: 320px;
             padding: sizes.$spacing-medium 0 sizes.$spacing-medium sizes.$spacing-medium;
             flex: 0 0 auto;
             object-fit: contain;
             object-position: center;
+            // @media (min-width: sizes.$breakpoint-m){
+            //     width: sizes.$card-image-width-m;
+            // }
+            // @media (min-width: sizes.$breakpoint-l){
+            //     width: sizes.$card-image-width-l;
+            // }
         }
 
         .content{
@@ -499,7 +505,6 @@ img.icon{
 
 .inverted{
     background: colors.$background-texture;
-    background: url('/assets/images/texture.png');
     background-size: cover;
     background-blend-mode: lighten;
     background-color: rgba(0,0,0,1);
