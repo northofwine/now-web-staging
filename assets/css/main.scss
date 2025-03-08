@@ -19,7 +19,7 @@ html{
 
 body {
     margin: 0;
-    padding: 0 sizes.$spacing-medium-dynamic-s sizes.$spacing-large;
+    padding: 0 sizes.$spacing-medium-dynamic-s;
     gap: sizes.$spacing-medium-dynamic-s;
     #main{gap: sizes.$spacing-medium-dynamic-m;}
 
@@ -77,10 +77,15 @@ header{
     top: 0;
     z-index: 100;
     background-color: colors.$background-default;
-    border-top: sizes.$spacing-medium-dynamic-s solid colors.$background-default;
+    padding-top: sizes.$spacing-medium-dynamic-s;
+    // border-top: sizes.$spacing-medium-dynamic-s solid colors.$background-default;
 
-    @media (min-width: sizes.$breakpoint-m){border-top: sizes.$spacing-medium-dynamic-m solid colors.$background-default;}
-    @media (min-width: sizes.$breakpoint-l){border-top: sizes.$spacing-medium-dynamic-l solid colors.$background-default;}
+    @media (min-width: sizes.$breakpoint-m){
+        padding-top: sizes.$spacing-medium-dynamic-m;
+    }
+    @media (min-width: sizes.$breakpoint-l){
+        padding-top: sizes.$spacing-medium-dynamic-l;
+    }
 
     .controls{
         margin: 0;
@@ -110,6 +115,7 @@ header{
     }
 
     &.splash{
+        position: static;
     
         .controls{
             border: none;
@@ -157,6 +163,19 @@ footer{
 
     > *{
         flex: 1 1 calc(100% / 3);
+    }
+}
+
+// Positioning
+.sticky{
+    top: calc(sizes.$spacing-medium-dynamic-s + 74px + sizes.$spacing-medium-dynamic-s);
+
+    @media (min-width: sizes.$breakpoint-m){
+        position: sticky;
+        top: calc(sizes.$spacing-medium-dynamic-m + 74px + sizes.$spacing-medium-dynamic-m);
+    }
+    @media (min-width: sizes.$breakpoint-l){
+        top: calc(sizes.$spacing-medium-dynamic-l + 74px + sizes.$spacing-medium-dynamic-l);
     }
 }
 
@@ -300,8 +319,8 @@ nav{
     margin: - sizes.$spacing-medium 0 0 0;
     width: 50%;
     max-height: 50vh;
-    position: sticky;
-    top: 0;
+    // position: sticky;
+    // top: 0;
     object-fit: cover;
     object-position: bottom center;
 

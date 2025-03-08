@@ -4,8 +4,12 @@
     <body>
         {% include header.html %}
             <section id="sidebar">
-                {{ content }}
-                <nav id="filter">
+                {% if page.url == '/utvalg.html' %}
+                    {{ content }}
+                    <nav id="filter" class="sticky">
+                {% else %}
+                    {{ content | replace: '<h1', '<h1 class="sticky"' }}
+                {% endif %}
                 </nav>
             </section>
 

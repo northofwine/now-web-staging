@@ -1,9 +1,9 @@
 <li class="{{ product.product_type_name }}">
     <a class="card product" href="/utvalg/{{ product.slug }}">
         {% if product.image.url %}
-            <img src="{{ product.image.url }}?w=480">
+            <img class="sticky" src="{{ product.image.url }}?w=480">
         {% else %}
-            <img src="/assets/images/bottle.png">
+            <img class="sticky" src="/assets/images/bottle.png">
         {% endif %}
         <div class="content">
             <div class="meta">

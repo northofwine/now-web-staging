@@ -5,9 +5,9 @@
         {% include header.html %}
         <section id="sidebar">
             {% if page.image.url %}
-                <img src="{{ page.image.url }}?w=480">
+                <img class="sticky" src="{{ page.image.url }}?w=480">
             {% else %}
-                <img src="/assets/images/bottle.png">
+                <img class="sticky" src="/assets/images/bottle.png">
             {% endif %}
 
         </section>
