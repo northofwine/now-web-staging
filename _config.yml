@@ -1,6 +1,6 @@
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 baseurl: "" # the subpath of your site, e.g. /blog
-title: "" # the name of your site, e.g. ACME Corp.
+title: "North of Wine" # the name of your site, e.g. ACME Corp.
 
 organization:
   name: "North of Wine AS"
@@ -20,11 +20,12 @@ contentful:
         space: ENV_CONTENTFUL_SPACE_ID
         access_token: ENV_CONTENTFUL_ACCESS_TOKEN
         environment: ENV_CONTENTFUL_ENVIRONMENT
+        cda_query:
+          limit: 200
 
 page_gen-dirs: false
 page_gen:
 - data: contentful.spaces.northofwine.product
   template: details
   dir: utvalg
-  #name: product_short_name
-  name_expr: record['product_short_name'].downcase.strip.gsub(/\’/, '-').gsub(/\'/, '-').gsub(/\.\ /, '-').gsub(/\./, '-').gsub(' ', '-').gsub(/\--/, '-').delete_suffix('-')
+  name: slug

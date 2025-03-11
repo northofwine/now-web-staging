@@ -1,46 +1,37 @@
+
 {% if page.url == '/' %}
-<header class="splash">
-    <nav>
-        <ul>
-            <li>
-                <a href="/">
-                    <img src="/assets/images/northofwine.svg">
-                </a>
-            </li>
+    <header class="splash inverted">
+        <div class="controls">
+            <a href="/" class="button">
+                <img class="logo" src="/assets/icons/northofwine-left.svg">
+            </a>
+        </div>
+        <nav id="">
             {% for item in site.data.navigation %}
-            <li>
-                <a class="nav {% if item.url == page.url %}selected{% endif %}" href="{{ item.url }}">
-                    {{ item.title }}
+                <a class="button {% if item.url == page.url %}selected{% endif %}" href="{{ item.url }}">
+                    {{- item.title -}}
                 </a>
-            </li>
             {% endfor %}
-        </ul>
-    </nav>
-    <img class="splash" src="/assets/images/illustration.svg">
-</header>
+        </nav>
+        <img class="illustration" src="/assets/images/illustration.svg">
+    </header>
 {% else %}
-<header id="menu" class="minimized">
-    <ul class="horizontal">
-        <a class="nav padded" href="/">
-            <img src="/assets/icons/inverted/northofwine.svg">
-        </a>
-        <a id="open" class="nav padded" onclick="expandMenu()">
-            <img src="/assets/icons/inverted/menu.svg">
-        </a>
-        <a id="close" class="nav padded" onclick="expandMenu()">
-            <img src="/assets/icons/inverted/close.svg">
-        </a>
-    </ul>
-    <nav>
-        <ul>
+    <header class="minimized">
+        <div class="controls">
+            <a class="button" href="/">
+                <img class="logo" src="/assets/icons/northofwine-left.svg">
+                {{- site.title -}}
+            </a>
+            <a id="menu" class="button" onclick="expandMenu()">
+                <img src="/assets/icons/menu.svg">
+            </a>
+        </div>
+        <nav id="menu" class="inverted">
             {% for item in site.data.navigation %}
-            <li>
-                <a class="nav {% if item.url == page.url %}selected{% endif %}" href="{{ item.url }}">
-                    {{ item.title }}
+                <a class="button {% if item.url == page.url %}selected{% endif %}" href="{{ item.url }}">
+                    {{- item.title -}}
                 </a>
-            </li>
             {% endfor %}
-        </ul>
-    </nav>
-</header>
+        </nav>
+    </header>
 {% endif %}
