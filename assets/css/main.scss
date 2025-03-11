@@ -116,6 +116,15 @@ header{
 
     &.splash{
         position: relative;
+        margin-top: sizes.$spacing-medium-dynamic-s;
+        padding: 0;
+    
+        @media (min-width: sizes.$breakpoint-m){
+            margin-top: sizes.$spacing-medium-dynamic-m;
+        }
+        @media (min-width: sizes.$breakpoint-l){
+            margin-top: sizes.$spacing-medium-dynamic-l;
+        }
     
         .controls{
             border: none;
@@ -289,6 +298,7 @@ nav{
                 flex: 1 1 100%;
             }
             ul{
+                flex: 1 1 100%;
                 padding: 0;
                 list-style: none;
             }
